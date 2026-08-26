@@ -5,8 +5,9 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "datasets>=1.1.1",
-    "evaluate>=0.2.0",
+    "accelerate>=1.1.0",
+    "datasets>=3.0.0",
+    "evaluate>=0.4.3",
     "fastapi==0.135.2",
     "matplotlib>=3.11.1",
     "nltk>=3.10.3",
@@ -32,6 +33,13 @@ torch = { index = "pytorch-cu121" }
 [[tool.uv.index]]
 name = "pytorch-cu121"
 url = "https://download.pytorch.org/whl/cu121"
+# Without this, uv treats the PyTorch index as a general-purpose index for
+# every package. It mirrors stale copies of common libraries (certifi 2022.x,
+# charset-normalizer 2.1.1, old fsspec), whose ancient pins then drag the
+# whole resolution backwards -- that is how `datasets>=1.1.1` landed on
+# datasets 1.1.1 from 2020. `explicit` restricts this index to packages that
+# name it in [tool.uv.sources], i.e. torch only.
+explicit = true
 
 [build-system]
 requires = ["hatchling"]
