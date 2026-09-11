@@ -24,6 +24,9 @@ dependencies = [
     "uvicorn[standard]==0.42.0",
 ]
 
+[project.scripts]
+asap-api = "asap.api.app:main"
+
 [project.optional-dependencies]
 dev = ["pytest>=8.3", "pytest-cov>=5.0", "httpx>=0.27"]
 
@@ -33,12 +36,6 @@ torch = { index = "pytorch-cu121" }
 [[tool.uv.index]]
 name = "pytorch-cu121"
 url = "https://download.pytorch.org/whl/cu121"
-# Without this, uv treats the PyTorch index as a general-purpose index for
-# every package. It mirrors stale copies of common libraries (certifi 2022.x,
-# charset-normalizer 2.1.1, old fsspec), whose ancient pins then drag the
-# whole resolution backwards -- that is how `datasets>=1.1.1` landed on
-# datasets 1.1.1 from 2020. `explicit` restricts this index to packages that
-# name it in [tool.uv.sources], i.e. torch only.
 explicit = true
 
 [build-system]
