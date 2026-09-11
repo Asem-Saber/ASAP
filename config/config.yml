@@ -1,0 +1,70 @@
+project:
+  name: arabic-sentiment-analysis
+  version: 0.1.0
+  seed: 42
+
+paths: 
+  raw_csv: data/raw/arabic_sentiment_reviews.csv
+  processed_dir: data/processed
+
+  model_dir: models
+  mlm_dir: models/mlm
+  cls_dir: models/cls
+
+data: 
+  text_column: content
+  label_column: label
+
+  val_fraction: 0.14
+  test_fraction: 0.06
+  stratify: true
+  dedup_on_normalized_text: true
+
+  min_tokens: 6
+  max_tokens: 128
+
+  labels:
+    0: negative
+    1: positive
+
+inference:
+  model_dir: models/cls
+  device: cuda
+  dtype: auto
+  max_length: 128
+  batch_size: 32
+  truncate: true
+
+api:
+  host: 127.0.0.1
+  port: 8000
+  log_level: info
+  cors_origins: []
+  max_text_chars: 4000
+  max_batch_items: 128
+
+training:
+  mlm:
+    base_model: distilbert-base-multilingual-cased
+    mlm_probability: 0.15
+    epochs: 10
+    batch_size: 8
+    learning_rate: 2.0e-5
+    weight_decay: 0.01
+    max_length: 128
+    use_fp16: true
+
+  classifier:
+    base_model: models/mlm
+    num_labels: 2
+    epochs: 5                    
+    batch_size: 16               
+    gradient_accumulation_steps: 2 
+    learning_rate: 2.0e-5        
+    weight_decay: 0.01          
+    max_length: 128
+    use_fp16: true
+    early_stopping_patience: 3   
+    metric_for_best_model: eval_f1
+    greater_is_better: true
+    save_total_limit: 2
