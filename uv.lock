@@ -2,16 +2,39 @@ version = 1
 revision = 3
 requires-python = ">=3.11"
 resolution-markers = [
-    "python_full_version >= '3.14' and sys_platform == 'win32'",
-    "python_full_version >= '3.14' and sys_platform == 'emscripten'",
-    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
-    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'win32'",
-    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'emscripten'",
-    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
-    "python_full_version < '3.12' and sys_platform == 'win32'",
-    "python_full_version < '3.12' and sys_platform == 'emscripten'",
-    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version >= '3.14' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.14' and sys_platform == 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform == 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.14' and sys_platform == 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.14' and sys_platform == 'emscripten' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.14' and sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'emscripten' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "(python_full_version >= '3.12' and python_full_version < '3.14' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version >= '3.12' and python_full_version < '3.14' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version == '3.13.*' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')",
+    "python_full_version < '3.12' and sys_platform == 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform == 'emscripten' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "(python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version < '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')",
+    "python_full_version >= '3.14' and sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "(python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version == '3.12.*' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')",
+    "(python_full_version < '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version < '3.12' and sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')",
+    "python_full_version >= '3.14' and sys_platform == 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform == 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
 ]
+conflicts = [[
+    { package = "arabic-sentiment-analysis", extra = "cpu" },
+    { package = "arabic-sentiment-analysis", extra = "cu121" },
+]]
 
 [[package]]
 name = "accelerate"
@@ -19,13 +42,16 @@ version = "1.14.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "huggingface-hub" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
-    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
     { name = "packaging" },
     { name = "psutil" },
     { name = "pyyaml" },
     { name = "safetensors" },
-    { name = "torch" },
+    { name = "torch", version = "2.5.1", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(python_full_version < '3.13' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version >= '3.13' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'aarch64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "torch", version = "2.5.1", source = { registry = "https://pypi.org/simple" }, marker = "(extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "torch", version = "2.5.1+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(python_full_version >= '3.13' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version < '3.13' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "torch", version = "2.5.1+cu121", source = { registry = "https://download.pytorch.org/whl/cu121" }, marker = "extra == 'extra-25-arabic-sentiment-analysis-cu121'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/8d/75/94cd5d389649578aca399e5aa822637eec18319a1dadc400ffe2f9a7493f/accelerate-1.14.0.tar.gz", hash = "sha256:41b9c4377a54e0b460a959b0defa1b736e4ca0a2373252d9a539964c2afe3c8d", size = 412167, upload-time = "2026-06-11T13:45:52.326Z" }
 wheels = [
@@ -52,7 +78,7 @@ dependencies = [
     { name = "frozenlist" },
     { name = "multidict" },
     { name = "propcache" },
-    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.13' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
     { name = "yarl" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/58/d9/22ce5786ac0c1653ae8b6c23bded02c1686d11f0dbb45b31ce128e0df985/aiohttp-3.14.3.tar.gz", hash = "sha256:9491196535a88924a60afd5b5f434b5b203b6cc616250878dbdb223a8f7844bc", size = 7971213, upload-time = "2026-07-23T01:57:27.037Z" }
@@ -165,7 +191,7 @@ version = "1.4.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "frozenlist" },
-    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.13' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/61/62/06741b579156360248d1ec624842ad0edf697050bbaf7c3e46394e106ad1/aiosignal-1.4.0.tar.gz", hash = "sha256:f47eecd9468083c2029cc99945502cb7708b082c232f9aca65da147157b251c7", size = 25007, upload-time = "2025-07-03T22:54:43.528Z" }
 wheels = [
@@ -196,7 +222,7 @@ version = "4.14.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "idna" },
-    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.13' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/61/cc/a381afa6efea9f496eff839d4a6a1aed3bfafc7b3ab4b0d1b243a12573dd/anyio-4.14.2.tar.gz", hash = "sha256:cfa139f3ed1a23ee8f88a145ddb5ac7605b8bbfd8592baacd7ce3d8bb4313c7f", size = 260176, upload-time = "2026-07-12T20:29:07.082Z" }
 wheels = [
@@ -212,10 +238,11 @@ dependencies = [
     { name = "datasets" },
     { name = "evaluate" },
     { name = "fastapi" },
+    { name = "httpx2" },
     { name = "matplotlib" },
     { name = "nltk" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
-    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
     { name = "pandas" },
     { name = "pyarrow" },
     { name = "pydantic" },
@@ -223,12 +250,18 @@ dependencies = [
     { name = "regex" },
     { name = "scikit-learn" },
     { name = "seaborn" },
-    { name = "torch" },
     { name = "transformers" },
     { name = "uvicorn", extra = ["standard"] },
 ]
 
 [package.optional-dependencies]
+cpu = [
+    { name = "torch", version = "2.5.1", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(python_full_version < '3.13' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version >= '3.13' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'aarch64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "torch", version = "2.5.1+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "(python_full_version >= '3.13' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version < '3.13' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+]
+cu121 = [
+    { name = "torch", version = "2.5.1+cu121", source = { registry = "https://download.pytorch.org/whl/cu121" } },
+]
 dev = [
     { name = "httpx" },
     { name = "pytest" },
@@ -242,6 +275,7 @@ requires-dist = [
     { name = "evaluate", specifier = ">=0.4.3" },
     { name = "fastapi", specifier = "==0.135.2" },
     { name = "httpx", marker = "extra == 'dev'", specifier = ">=0.27" },
+    { name = "httpx2", specifier = ">=2.12.0" },
     { name = "matplotlib", specifier = ">=3.11.1" },
     { name = "nltk", specifier = ">=3.10.3" },
     { name = "numpy", specifier = ">=2.4.6" },
@@ -254,11 +288,12 @@ requires-dist = [
     { name = "regex", specifier = ">=2026.7.19" },
     { name = "scikit-learn", specifier = ">=1.9.0" },
     { name = "seaborn", specifier = ">=0.13.2" },
-    { name = "torch", specifier = "==2.5.1", index = "https://download.pytorch.org/whl/cu121" },
+    { name = "torch", marker = "extra == 'cpu'", specifier = "==2.5.1", index = "https://download.pytorch.org/whl/cpu", conflict = { package = "arabic-sentiment-analysis", extra = "cpu" } },
+    { name = "torch", marker = "extra == 'cu121'", specifier = "==2.5.1", index = "https://download.pytorch.org/whl/cu121", conflict = { package = "arabic-sentiment-analysis", extra = "cu121" } },
     { name = "transformers", specifier = ">=5.15.1" },
     { name = "uvicorn", extras = ["standard"], specifier = "==0.42.0" },
 ]
-provides-extras = ["dev"]
+provides-extras = ["dev", "cpu", "cu121"]
 
 [[package]]
 name = "attrs"
@@ -292,7 +327,7 @@ name = "click"
 version = "8.4.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/76/d4/81420972a676e8ffea40450d8c8c92943e7218a78fe9b64359836cc9876b/click-8.4.2.tar.gz", hash = "sha256:9a6cea6e60b17ebe0a44c5cc636d94f09bd66142c1cd7d8b4cd731c4917a15f6", size = 338000, upload-time = "2026-06-24T17:45:15.148Z" }
 wheels = [
@@ -313,8 +348,8 @@ name = "contourpy"
 version = "1.3.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
-    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/58/01/1253e6698a07380cd31a736d248a3f2a50a7c88779a1813da27503cadc2a/contourpy-1.3.3.tar.gz", hash = "sha256:083e12155b210502d0bca491432bb04d56dc3432f95a979b429f2848c3dbe880", size = 13466174, upload-time = "2025-07-26T12:03:12.549Z" }
 wheels = [
@@ -507,7 +542,7 @@ wheels = [
 
 [package.optional-dependencies]
 toml = [
-    { name = "tomli", marker = "python_full_version <= '3.11'" },
+    { name = "tomli", marker = "python_full_version <= '3.11' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
 ]
 
 [[package]]
@@ -530,8 +565,8 @@ dependencies = [
     { name = "httpx" },
     { name = "huggingface-hub" },
     { name = "multiprocess" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
-    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
     { name = "packaging" },
     { name = "pandas" },
     { name = "pyarrow" },
@@ -573,8 +608,8 @@ dependencies = [
     { name = "fsspec", extra = ["http"] },
     { name = "huggingface-hub" },
     { name = "multiprocess" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
-    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
     { name = "packaging" },
     { name = "pandas" },
     { name = "requests" },
@@ -826,6 +861,19 @@ wheels = [
 ]
 
 [[package]]
+name = "httpcore2"
+version = "2.12.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "h11", marker = "python_full_version < '3.12' or sys_platform != 'emscripten' or extra == 'extra-25-arabic-sentiment-analysis-cpu' or extra == 'extra-25-arabic-sentiment-analysis-cu121'" },
+    { name = "truststore", marker = "python_full_version < '3.12' or sys_platform != 'emscripten' or extra == 'extra-25-arabic-sentiment-analysis-cpu' or extra == 'extra-25-arabic-sentiment-analysis-cu121'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/be/ad/f4f0e57345f1870f3e8cb624e058d7eca6e5a27d33bcc3311d9b618734cd/httpcore2-2.12.0.tar.gz", hash = "sha256:9293522bba0aa7c4c8e9e3f040c16575bd8868e155a77fa30c7a9085a5eae648", size = 67548, upload-time = "2026-08-18T13:22:08.211Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d2/74/d370e55600d9bcfa0d9794b0166126d49291a3d2b20c268fc98c453a4948/httpcore2-2.12.0-py3-none-any.whl", hash = "sha256:7e04258ce01013d7d615e5b910a3b27fac937d7a95038227e79652b4ba3b4ceb", size = 83074, upload-time = "2026-08-18T13:22:05.854Z" },
+]
+
+[[package]]
 name = "httptools"
 version = "0.8.0"
 source = { registry = "https://pypi.org/simple" }
@@ -884,6 +932,32 @@ wheels = [
 ]
 
 [[package]]
+name = "httpx2"
+version = "2.12.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "anyio", marker = "sys_platform != 'emscripten' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "httpcore2", marker = "sys_platform != 'emscripten' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "httpx2-jsfetch", marker = "(python_full_version >= '3.12' and sys_platform == 'emscripten') or (python_full_version < '3.12' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'emscripten' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "idna" },
+    { name = "truststore", marker = "sys_platform != 'emscripten' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "typing-extensions", marker = "python_full_version < '3.13' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/7f/f8/579a8b51e42e38ee32647df9f08aa25643ae788e275cc625b199829c4671/httpx2-2.12.0.tar.gz", hash = "sha256:7631fe9887a8a2275f4a2540e053aa670fcc50742864a9ae7c66e609fdcf12cf", size = 100040, upload-time = "2026-08-18T13:22:09.086Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c8/95/411ba65569158e862368917aaf56597f3e5fa3b91b0502919638465a08f3/httpx2-2.12.0-py3-none-any.whl", hash = "sha256:cc8b6eecb8661c146b8f89a60e97456ee086e91a784ed31ac450c3a9e613dd36", size = 95427, upload-time = "2026-08-18T13:22:06.834Z" },
+]
+
+[[package]]
+name = "httpx2-jsfetch"
+version = "1.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/cd/c4/0e5636363151a2a1795e0a77617168b9ca438e1748ec05fc9b5687f93d64/httpx2_jsfetch-1.0.tar.gz", hash = "sha256:70a0e3eabfef7cce5ad9c629f7d01ca05e418f586646f4ddf14782e4c1454c60", size = 6872, upload-time = "2026-08-07T00:13:07.492Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/9b/43/832f631d32e4f1211caa2ba368317739fe71f0b8530e4c9d15dc454bac2a/httpx2_jsfetch-1.0-py3-none-any.whl", hash = "sha256:cb916b707601e69a07721aabc8f3f6659be3a6893bc1ff5c6f9e02241df2da32", size = 6382, upload-time = "2026-08-07T00:13:06.567Z" },
+]
+
+[[package]]
 name = "huggingface-hub"
 version = "1.28.0"
 source = { registry = "https://pypi.org/simple" }
@@ -891,7 +965,7 @@ dependencies = [
     { name = "click" },
     { name = "filelock" },
     { name = "fsspec" },
-    { name = "hf-xet", marker = "platform_machine == 'AMD64' or platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'arm64' or platform_machine == 'x86_64'" },
+    { name = "hf-xet", marker = "platform_machine == 'AMD64' or platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'arm64' or platform_machine == 'x86_64' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
     { name = "httpx" },
     { name = "packaging" },
     { name = "pyyaml" },
@@ -905,11 +979,11 @@ wheels = [
 
 [[package]]
 name = "idna"
-version = "3.4"
+version = "3.19"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/8b/e1/43beb3d38dba6cb420cefa297822eac205a277ab43e5ba5d5c46faf96438/idna-3.4.tar.gz", hash = "sha256:814f528e8dead7d329833b91c5faa87d60bf71824cd12a7530b5526063d02cb4", size = 183077, upload-time = "2022-09-14T00:24:27.719Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/5f/f7/abb373e5757eaec4b922b92f97ec8d6d7e057cf06778247604fbc4e7c3f3/idna-3.19.tar.gz", hash = "sha256:5e0811a4383b21dc5838069f801c4fb62113b7447663d2530d2bd6e77b49bf15", size = 215237, upload-time = "2026-08-18T05:14:24.27Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/fc/34/3030de6f1370931b9dbb4dad48f6ab1015ab1d32447850b9fc94e60097be/idna-3.4-py3-none-any.whl", hash = "sha256:90b77e79eaa3eba6de819a0c442c0b4ceefc341a7a2ab77d7562bf49f425c5c2", size = 61538, upload-time = "2022-09-14T00:24:23.22Z" },
+    { url = "https://files.pythonhosted.org/packages/57/b0/0e52c878c53f245edd3a11020f20979b3f490f245af532c7cae3027754b5/idna-3.19-py3-none-any.whl", hash = "sha256:815e7be7a7806d54abb586dc943addc79e8b2ee16915059658cbeff4b1b43bf4", size = 68550, upload-time = "2026-08-18T05:14:22.343Z" },
 ]
 
 [[package]]
@@ -1143,8 +1217,8 @@ dependencies = [
     { name = "cycler" },
     { name = "fonttools" },
     { name = "kiwisolver" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
-    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
     { name = "packaging" },
     { name = "pillow" },
     { name = "pyparsing" },
@@ -1393,9 +1467,16 @@ name = "numpy"
 version = "2.4.6"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
-    "python_full_version < '3.12' and sys_platform == 'win32'",
-    "python_full_version < '3.12' and sys_platform == 'emscripten'",
-    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version < '3.12' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform == 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform == 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform == 'emscripten' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "(python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version < '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')",
+    "(python_full_version < '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version < '3.12' and sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')",
+    "python_full_version < '3.12' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform == 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/d0/ad/fed0499ce6a338d2a03ebae59cd15093910c8875328855781952abf6c2fe/numpy-2.4.6.tar.gz", hash = "sha256:f3a3570c4a2a16746ac2c31a7c7c7b0c186b95ce902e33db6f28094ed7387dda", size = 20735807, upload-time = "2026-05-18T23:37:14.07Z" }
 wheels = [
@@ -1477,12 +1558,24 @@ name = "numpy"
 version = "2.5.2"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
-    "python_full_version >= '3.14' and sys_platform == 'win32'",
-    "python_full_version >= '3.14' and sys_platform == 'emscripten'",
-    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
-    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'win32'",
-    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'emscripten'",
-    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version >= '3.14' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.14' and sys_platform == 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.14' and sys_platform == 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.14' and sys_platform == 'emscripten' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.14' and sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'emscripten' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "(python_full_version >= '3.12' and python_full_version < '3.14' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version >= '3.12' and python_full_version < '3.14' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version == '3.13.*' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')",
+    "python_full_version >= '3.14' and sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "(python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version == '3.12.*' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')",
+    "python_full_version >= '3.14' and sys_platform == 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/9a/80/db0b4559e57ec36362bedbb05530a87fafbcb6067708c946967a41d449e7/numpy-2.5.2.tar.gz", hash = "sha256:d482d171c406ae88c5b19cad3b6a1c4c5209f886ab74bc44c2c865c23f52d860", size = 20773161, upload-time = "2026-08-09T13:48:27.962Z" }
 wheels = [
@@ -1557,32 +1650,116 @@ wheels = [
 name = "nvidia-cublas-cu12"
 version = "12.1.3.1"
 source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/37/6d/121efd7382d5b0284239f4ab1fc1590d86d34ed4a4a2fdb13b30ca8e5740/nvidia_cublas_cu12-12.1.3.1-py3-none-manylinux1_x86_64.whl", hash = "sha256:ee53ccca76a6fc08fb9701aa95b6ceb242cdaab118c3bb152af4e579af792728", size = 410594774, upload-time = "2023-04-19T15:50:03.519Z" },
+    { url = "https://files.pythonhosted.org/packages/c5/ef/32a375b74bea706c93deea5613552f7c9104f961b21df423f5887eca713b/nvidia_cublas_cu12-12.1.3.1-py3-none-win_amd64.whl", hash = "sha256:2b964d60e8cf11b5e1073d179d85fa340c120e99b3067558f3cf98dd69d02906", size = 439918445, upload-time = "2023-04-19T15:56:13.346Z" },
+]
+
+[[package]]
+name = "nvidia-cublas-cu12"
+version = "12.4.5.8"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7f/7f/7fbae15a3982dc9595e49ce0f19332423b260045d0a6afe93cdbe2f1f624/nvidia_cublas_cu12-12.4.5.8-py3-none-manylinux2014_aarch64.whl", hash = "sha256:0f8aa1706812e00b9f19dfe0cdb3999b092ccb8ca168c0db5b8ea712456fd9b3", size = 363333771, upload-time = "2024-06-18T19:28:09.881Z" },
+    { url = "https://files.pythonhosted.org/packages/ae/71/1c91302526c45ab494c23f61c7a84aa568b8c1f9d196efa5993957faf906/nvidia_cublas_cu12-12.4.5.8-py3-none-manylinux2014_x86_64.whl", hash = "sha256:2fc8da60df463fdefa81e323eef2e36489e1c94335b5358bcb38360adf75ac9b", size = 363438805, upload-time = "2024-04-03T20:57:06.025Z" },
+    { url = "https://files.pythonhosted.org/packages/e2/2a/4f27ca96232e8b5269074a72e03b4e0d43aa68c9b965058b1684d07c6ff8/nvidia_cublas_cu12-12.4.5.8-py3-none-win_amd64.whl", hash = "sha256:5a796786da89203a0657eda402bcdcec6180254a8ac22d72213abc42069522dc", size = 396895858, upload-time = "2024-04-03T21:03:31.996Z" },
 ]
 
 [[package]]
 name = "nvidia-cuda-cupti-cu12"
 version = "12.1.105"
 source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/7e/00/6b218edd739ecfc60524e585ba8e6b00554dd908de2c9c66c1af3e44e18d/nvidia_cuda_cupti_cu12-12.1.105-py3-none-manylinux1_x86_64.whl", hash = "sha256:e54fde3983165c624cb79254ae9818a456eb6e87a7fd4d56a2352c24ee542d7e", size = 14109015, upload-time = "2023-04-19T15:47:32.502Z" },
+    { url = "https://files.pythonhosted.org/packages/d0/56/0021e32ea2848c24242f6b56790bd0ccc8bf99f973ca790569c6ca028107/nvidia_cuda_cupti_cu12-12.1.105-py3-none-win_amd64.whl", hash = "sha256:bea8236d13a0ac7190bd2919c3e8e6ce1e402104276e6f9694479e48bb0eb2a4", size = 10154340, upload-time = "2023-04-19T15:53:33.563Z" },
+]
+
+[[package]]
+name = "nvidia-cuda-cupti-cu12"
+version = "12.4.127"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/93/b5/9fb3d00386d3361b03874246190dfec7b206fd74e6e287b26a8fcb359d95/nvidia_cuda_cupti_cu12-12.4.127-py3-none-manylinux2014_aarch64.whl", hash = "sha256:79279b35cf6f91da114182a5ce1864997fd52294a87a16179ce275773799458a", size = 12354556, upload-time = "2024-06-18T19:30:40.546Z" },
+    { url = "https://files.pythonhosted.org/packages/67/42/f4f60238e8194a3106d06a058d494b18e006c10bb2b915655bd9f6ea4cb1/nvidia_cuda_cupti_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl", hash = "sha256:9dec60f5ac126f7bb551c055072b69d85392b13311fcc1bcda2202d172df30fb", size = 13813957, upload-time = "2024-04-03T20:55:01.564Z" },
+    { url = "https://files.pythonhosted.org/packages/f3/79/8cf313ec17c58ccebc965568e5bcb265cdab0a1df99c4e674bb7a3b99bfe/nvidia_cuda_cupti_cu12-12.4.127-py3-none-win_amd64.whl", hash = "sha256:5688d203301ab051449a2b1cb6690fbe90d2b372f411521c86018b950f3d7922", size = 9938035, upload-time = "2024-04-03T21:01:01.109Z" },
 ]
 
 [[package]]
 name = "nvidia-cuda-nvrtc-cu12"
 version = "12.1.105"
 source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b6/9f/c64c03f49d6fbc56196664d05dba14e3a561038a81a638eeb47f4d4cfd48/nvidia_cuda_nvrtc_cu12-12.1.105-py3-none-manylinux1_x86_64.whl", hash = "sha256:339b385f50c309763ca65456ec75e17bbefcbbf2893f462cb8b90584cd27a1c2", size = 23671734, upload-time = "2023-04-19T15:48:32.42Z" },
+    { url = "https://files.pythonhosted.org/packages/ad/1d/f76987c4f454eb86e0b9a0e4f57c3bf1ac1d13ad13cd1a4da4eb0e0c0ce9/nvidia_cuda_nvrtc_cu12-12.1.105-py3-none-win_amd64.whl", hash = "sha256:0a98a522d9ff138b96c010a65e145dc1b4850e9ecb75a0172371793752fd46ed", size = 19331863, upload-time = "2023-04-19T15:54:34.603Z" },
+]
+
+[[package]]
+name = "nvidia-cuda-nvrtc-cu12"
+version = "12.4.127"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/77/aa/083b01c427e963ad0b314040565ea396f914349914c298556484f799e61b/nvidia_cuda_nvrtc_cu12-12.4.127-py3-none-manylinux2014_aarch64.whl", hash = "sha256:0eedf14185e04b76aa05b1fea04133e59f465b6f960c0cbf4e37c3cb6b0ea198", size = 24133372, upload-time = "2024-06-18T19:32:00.576Z" },
+    { url = "https://files.pythonhosted.org/packages/2c/14/91ae57cd4db3f9ef7aa99f4019cfa8d54cb4caa7e00975df6467e9725a9f/nvidia_cuda_nvrtc_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl", hash = "sha256:a178759ebb095827bd30ef56598ec182b85547f1508941a3d560eb7ea1fbf338", size = 24640306, upload-time = "2024-04-03T20:56:01.463Z" },
+    { url = "https://files.pythonhosted.org/packages/7c/30/8c844bfb770f045bcd8b2c83455c5afb45983e1a8abf0c4e5297b481b6a5/nvidia_cuda_nvrtc_cu12-12.4.127-py3-none-win_amd64.whl", hash = "sha256:a961b2f1d5f17b14867c619ceb99ef6fcec12e46612711bcec78eb05068a60ec", size = 19751955, upload-time = "2024-04-03T21:01:51.133Z" },
 ]
 
 [[package]]
 name = "nvidia-cuda-runtime-cu12"
 version = "12.1.105"
 source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/eb/d5/c68b1d2cdfcc59e72e8a5949a37ddb22ae6cade80cd4a57a84d4c8b55472/nvidia_cuda_runtime_cu12-12.1.105-py3-none-manylinux1_x86_64.whl", hash = "sha256:6e258468ddf5796e25f1dc591a31029fa317d97a0a94ed93468fc86301d61e40", size = 823596, upload-time = "2023-04-19T15:47:22.471Z" },
+    { url = "https://files.pythonhosted.org/packages/9f/e2/7a2b4b5064af56ea8ea2d8b2776c0f2960d95c88716138806121ae52a9c9/nvidia_cuda_runtime_cu12-12.1.105-py3-none-win_amd64.whl", hash = "sha256:dfb46ef84d73fababab44cf03e3b83f80700d27ca300e537f85f636fac474344", size = 821226, upload-time = "2023-04-19T15:53:23.082Z" },
+]
+
+[[package]]
+name = "nvidia-cuda-runtime-cu12"
+version = "12.4.127"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a1/aa/b656d755f474e2084971e9a297def515938d56b466ab39624012070cb773/nvidia_cuda_runtime_cu12-12.4.127-py3-none-manylinux2014_aarch64.whl", hash = "sha256:961fe0e2e716a2a1d967aab7caee97512f71767f852f67432d572e36cb3a11f3", size = 894177, upload-time = "2024-06-18T19:32:52.877Z" },
+    { url = "https://files.pythonhosted.org/packages/ea/27/1795d86fe88ef397885f2e580ac37628ed058a92ed2c39dc8eac3adf0619/nvidia_cuda_runtime_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl", hash = "sha256:64403288fa2136ee8e467cdc9c9427e0434110899d07c779f25b5c068934faa5", size = 883737, upload-time = "2024-04-03T20:54:51.355Z" },
+    { url = "https://files.pythonhosted.org/packages/a8/8b/450e93fab75d85a69b50ea2d5fdd4ff44541e0138db16f9cd90123ef4de4/nvidia_cuda_runtime_cu12-12.4.127-py3-none-win_amd64.whl", hash = "sha256:09c2e35f48359752dfa822c09918211844a3d93c100a715d79b59591130c5e1e", size = 878808, upload-time = "2024-04-03T21:00:49.77Z" },
 ]
 
 [[package]]
@@ -1590,50 +1767,147 @@ name = "nvidia-cudnn-cu12"
 version = "9.1.0.70"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "nvidia-cublas-cu12", marker = "sys_platform != 'emscripten' and sys_platform != 'win32'" },
+    { name = "nvidia-cublas-cu12", version = "12.1.3.1", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-25-arabic-sentiment-analysis-cu121'" },
+    { name = "nvidia-cublas-cu12", version = "12.4.5.8", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/9f/fd/713452cd72343f682b1c7b9321e23829f00b842ceaedcda96e742ea0b0b3/nvidia_cudnn_cu12-9.1.0.70-py3-none-manylinux2014_x86_64.whl", hash = "sha256:165764f44ef8c61fcdfdfdbe769d687e06374059fbb388b6c89ecb0e28793a6f", size = 664752741, upload-time = "2024-04-22T15:24:15.253Z" },
+    { url = "https://files.pythonhosted.org/packages/3f/d0/f90ee6956a628f9f04bf467932c0a25e5a7e706a684b896593c06c82f460/nvidia_cudnn_cu12-9.1.0.70-py3-none-win_amd64.whl", hash = "sha256:6278562929433d68365a07a4a1546c237ba2849852c0d4b2262a486e805b977a", size = 679925892, upload-time = "2024-04-22T15:24:53.333Z" },
 ]
 
 [[package]]
 name = "nvidia-cufft-cu12"
 version = "11.0.2.54"
 source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/86/94/eb540db023ce1d162e7bea9f8f5aa781d57c65aed513c33ee9a5123ead4d/nvidia_cufft_cu12-11.0.2.54-py3-none-manylinux1_x86_64.whl", hash = "sha256:794e3948a1aa71fd817c3775866943936774d1c14e7628c74f6f7417224cdf56", size = 121635161, upload-time = "2023-04-19T15:50:46Z" },
+    { url = "https://files.pythonhosted.org/packages/f7/57/7927a3aa0e19927dfed30256d1c854caf991655d847a4e7c01fe87e3d4ac/nvidia_cufft_cu12-11.0.2.54-py3-none-win_amd64.whl", hash = "sha256:d9ac353f78ff89951da4af698f80870b1534ed69993f10a4cf1d96f21357e253", size = 121344196, upload-time = "2023-04-19T15:56:59.562Z" },
+]
+
+[[package]]
+name = "nvidia-cufft-cu12"
+version = "11.2.1.3"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
+dependencies = [
+    { name = "nvidia-nvjitlink-cu12", version = "12.4.127", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7a/8a/0e728f749baca3fbeffad762738276e5df60851958be7783af121a7221e7/nvidia_cufft_cu12-11.2.1.3-py3-none-manylinux2014_aarch64.whl", hash = "sha256:5dad8008fc7f92f5ddfa2101430917ce2ffacd86824914c82e28990ad7f00399", size = 211422548, upload-time = "2024-06-18T19:33:39.396Z" },
+    { url = "https://files.pythonhosted.org/packages/27/94/3266821f65b92b3138631e9c8e7fe1fb513804ac934485a8d05776e1dd43/nvidia_cufft_cu12-11.2.1.3-py3-none-manylinux2014_x86_64.whl", hash = "sha256:f083fc24912aa410be21fa16d157fed2055dab1cc4b6934a0e03cba69eb242b9", size = 211459117, upload-time = "2024-04-03T20:57:40.402Z" },
+    { url = "https://files.pythonhosted.org/packages/f6/ee/3f3f8e9874f0be5bbba8fb4b62b3de050156d159f8b6edc42d6f1074113b/nvidia_cufft_cu12-11.2.1.3-py3-none-win_amd64.whl", hash = "sha256:d802f4954291101186078ccbe22fc285a902136f974d369540fd4a5333d1440b", size = 210576476, upload-time = "2024-04-03T21:04:06.422Z" },
 ]
 
 [[package]]
 name = "nvidia-curand-cu12"
 version = "10.3.2.106"
 source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/44/31/4890b1c9abc496303412947fc7dcea3d14861720642b49e8ceed89636705/nvidia_curand_cu12-10.3.2.106-py3-none-manylinux1_x86_64.whl", hash = "sha256:9d264c5036dde4e64f1de8c50ae753237c12e0b1348738169cd0f8a536c0e1e0", size = 56467784, upload-time = "2023-04-19T15:51:04.804Z" },
+    { url = "https://files.pythonhosted.org/packages/5c/97/4c9c7c79efcdf5b70374241d48cf03b94ef6707fd18ea0c0f53684931d0b/nvidia_curand_cu12-10.3.2.106-py3-none-win_amd64.whl", hash = "sha256:75b6b0c574c0037839121317e17fd01f8a69fd2ef8e25853d826fec30bdba74a", size = 55995813, upload-time = "2023-04-19T15:57:16.676Z" },
+]
+
+[[package]]
+name = "nvidia-curand-cu12"
+version = "10.3.5.147"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/80/9c/a79180e4d70995fdf030c6946991d0171555c6edf95c265c6b2bf7011112/nvidia_curand_cu12-10.3.5.147-py3-none-manylinux2014_aarch64.whl", hash = "sha256:1f173f09e3e3c76ab084aba0de819c49e56614feae5c12f69883f4ae9bb5fad9", size = 56314811, upload-time = "2024-06-18T19:34:48.575Z" },
+    { url = "https://files.pythonhosted.org/packages/8a/6d/44ad094874c6f1b9c654f8ed939590bdc408349f137f9b98a3a23ccec411/nvidia_curand_cu12-10.3.5.147-py3-none-manylinux2014_x86_64.whl", hash = "sha256:a88f583d4e0bb643c49743469964103aa59f7f708d862c3ddb0fc07f851e3b8b", size = 56305206, upload-time = "2024-04-03T20:58:08.722Z" },
+    { url = "https://files.pythonhosted.org/packages/1c/22/2573503d0d4e45673c263a313f79410e110eb562636b0617856fdb2ff5f6/nvidia_curand_cu12-10.3.5.147-py3-none-win_amd64.whl", hash = "sha256:f307cc191f96efe9e8f05a87096abc20d08845a841889ef78cb06924437f6771", size = 55799918, upload-time = "2024-04-03T21:04:34.45Z" },
 ]
 
 [[package]]
 name = "nvidia-cusolver-cu12"
 version = "11.4.5.107"
 source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
 dependencies = [
-    { name = "nvidia-cublas-cu12", marker = "sys_platform != 'emscripten' and sys_platform != 'win32'" },
-    { name = "nvidia-cusparse-cu12", marker = "sys_platform != 'emscripten' and sys_platform != 'win32'" },
-    { name = "nvidia-nvjitlink-cu12", marker = "sys_platform != 'emscripten' and sys_platform != 'win32'" },
+    { name = "nvidia-cublas-cu12", version = "12.1.3.1", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-25-arabic-sentiment-analysis-cu121'" },
+    { name = "nvidia-cusparse-cu12", version = "12.1.0.106", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-25-arabic-sentiment-analysis-cu121'" },
+    { name = "nvidia-nvjitlink-cu12", version = "12.9.86", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-25-arabic-sentiment-analysis-cu121'" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/bc/1d/8de1e5c67099015c834315e333911273a8c6aaba78923dd1d1e25fc5f217/nvidia_cusolver_cu12-11.4.5.107-py3-none-manylinux1_x86_64.whl", hash = "sha256:8a7ec542f0412294b15072fa7dab71d31334014a69f953004ea7a118206fe0dd", size = 124161928, upload-time = "2023-04-19T15:51:25.781Z" },
+    { url = "https://files.pythonhosted.org/packages/b8/80/8fca0bf819122a631c3976b6fc517c1b10741b643b94046bd8dd451522c5/nvidia_cusolver_cu12-11.4.5.107-py3-none-win_amd64.whl", hash = "sha256:74e0c3a24c78612192a74fcd90dd117f1cf21dea4822e66d89e8ea80e3cd2da5", size = 121643081, upload-time = "2023-04-19T15:57:43.035Z" },
+]
+
+[[package]]
+name = "nvidia-cusolver-cu12"
+version = "11.6.1.9"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
+dependencies = [
+    { name = "nvidia-cublas-cu12", version = "12.4.5.8", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-cusparse-cu12", version = "12.3.1.170", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-nvjitlink-cu12", version = "12.4.127", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/46/6b/a5c33cf16af09166845345275c34ad2190944bcc6026797a39f8e0a282e0/nvidia_cusolver_cu12-11.6.1.9-py3-none-manylinux2014_aarch64.whl", hash = "sha256:d338f155f174f90724bbde3758b7ac375a70ce8e706d70b018dd3375545fc84e", size = 127634111, upload-time = "2024-06-18T19:35:01.793Z" },
+    { url = "https://files.pythonhosted.org/packages/3a/e1/5b9089a4b2a4790dfdea8b3a006052cfecff58139d5a4e34cb1a51df8d6f/nvidia_cusolver_cu12-11.6.1.9-py3-none-manylinux2014_x86_64.whl", hash = "sha256:19e33fa442bcfd085b3086c4ebf7e8debc07cfe01e11513cc6d332fd918ac260", size = 127936057, upload-time = "2024-04-03T20:58:28.735Z" },
+    { url = "https://files.pythonhosted.org/packages/f2/be/d435b7b020e854d5d5a682eb5de4328fd62f6182507406f2818280e206e2/nvidia_cusolver_cu12-11.6.1.9-py3-none-win_amd64.whl", hash = "sha256:e77314c9d7b694fcebc84f58989f3aa4fb4cb442f12ca1a9bde50f5e8f6d1b9c", size = 125224015, upload-time = "2024-04-03T21:04:53.339Z" },
 ]
 
 [[package]]
 name = "nvidia-cusparse-cu12"
 version = "12.1.0.106"
 source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
 dependencies = [
-    { name = "nvidia-nvjitlink-cu12", marker = "sys_platform != 'emscripten' and sys_platform != 'win32'" },
+    { name = "nvidia-nvjitlink-cu12", version = "12.9.86", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'extra-25-arabic-sentiment-analysis-cu121'" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/65/5b/cfaeebf25cd9fdec14338ccb16f6b2c4c7fa9163aefcf057d86b9cc248bb/nvidia_cusparse_cu12-12.1.0.106-py3-none-manylinux1_x86_64.whl", hash = "sha256:f3b50f42cf363f86ab21f720998517a659a48131e8d538dc02f8768237bd884c", size = 195958278, upload-time = "2023-04-19T15:51:49.939Z" },
+    { url = "https://files.pythonhosted.org/packages/0f/95/48fdbba24c93614d1ecd35bc6bdc6087bd17cbacc3abc4b05a9c2a1ca232/nvidia_cusparse_cu12-12.1.0.106-py3-none-win_amd64.whl", hash = "sha256:b798237e81b9719373e8fae8d4f091b70a0cf09d9d85c95a557e11df2d8e9a5a", size = 195414588, upload-time = "2023-04-19T15:58:08.389Z" },
+]
+
+[[package]]
+name = "nvidia-cusparse-cu12"
+version = "12.3.1.170"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
+dependencies = [
+    { name = "nvidia-nvjitlink-cu12", version = "12.4.127", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.12' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/96/a9/c0d2f83a53d40a4a41be14cea6a0bf9e668ffcf8b004bd65633f433050c0/nvidia_cusparse_cu12-12.3.1.170-py3-none-manylinux2014_aarch64.whl", hash = "sha256:9d32f62896231ebe0480efd8a7f702e143c98cfaa0e8a76df3386c1ba2b54df3", size = 207381987, upload-time = "2024-06-18T19:35:32.989Z" },
+    { url = "https://files.pythonhosted.org/packages/db/f7/97a9ea26ed4bbbfc2d470994b8b4f338ef663be97b8f677519ac195e113d/nvidia_cusparse_cu12-12.3.1.170-py3-none-manylinux2014_x86_64.whl", hash = "sha256:ea4f11a2904e2a8dc4b1833cc1b5181cde564edd0d5cd33e3c168eff2d1863f1", size = 207454763, upload-time = "2024-04-03T20:58:59.995Z" },
+    { url = "https://files.pythonhosted.org/packages/a2/e0/3155ca539760a8118ec94cc279b34293309bcd14011fc724f87f31988843/nvidia_cusparse_cu12-12.3.1.170-py3-none-win_amd64.whl", hash = "sha256:9bc90fb087bc7b4c15641521f31c0371e9a612fc2ba12c338d3ae032e6b6797f", size = 204684315, upload-time = "2024-04-03T21:05:26.031Z" },
 ]
 
 [[package]]
@@ -1646,18 +1920,61 @@ wheels = [
 
 [[package]]
 name = "nvidia-nvjitlink-cu12"
+version = "12.4.127"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/02/45/239d52c05074898a80a900f49b1615d81c07fceadd5ad6c4f86a987c0bc4/nvidia_nvjitlink_cu12-12.4.127-py3-none-manylinux2014_aarch64.whl", hash = "sha256:4abe7fef64914ccfa909bc2ba39739670ecc9e820c83ccc7a6ed414122599b83", size = 20552510, upload-time = "2024-06-18T20:20:13.871Z" },
+    { url = "https://files.pythonhosted.org/packages/ff/ff/847841bacfbefc97a00036e0fce5a0f086b640756dc38caea5e1bb002655/nvidia_nvjitlink_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl", hash = "sha256:06b3b9b25bf3f8af351d664978ca26a16d2c5127dbd53c0497e28d1fb9611d57", size = 21066810, upload-time = "2024-04-03T20:59:46.957Z" },
+    { url = "https://files.pythonhosted.org/packages/81/19/0babc919031bee42620257b9a911c528f05fb2688520dcd9ca59159ffea8/nvidia_nvjitlink_cu12-12.4.127-py3-none-win_amd64.whl", hash = "sha256:fd9020c501d27d135f983c6d3e244b197a7ccad769e34df53a42e276b0e25fa1", size = 95336325, upload-time = "2024-04-03T21:06:25.073Z" },
+]
+
+[[package]]
+name = "nvidia-nvjitlink-cu12"
 version = "12.9.86"
 source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/46/0c/c75bbfb967457a0b7670b8ad267bfc4fffdf341c074e0a80db06c24ccfd4/nvidia_nvjitlink_cu12-12.9.86-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl", hash = "sha256:e3f1171dbdc83c5932a45f0f4c99180a70de9bd2718c1ab77d14104f6d7147f9", size = 39748338, upload-time = "2025-06-05T20:10:25.613Z" },
+    { url = "https://files.pythonhosted.org/packages/97/bc/2dcba8e70cf3115b400fef54f213bcd6715a3195eba000f8330f11e40c45/nvidia_nvjitlink_cu12-12.9.86-py3-none-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:994a05ef08ef4b0b299829cde613a424382aff7efb08a7172c1fa616cc3af2ca", size = 39514880, upload-time = "2025-06-05T20:10:04.89Z" },
+    { url = "https://files.pythonhosted.org/packages/dd/7e/2eecb277d8a98184d881fb98a738363fd4f14577a4d2d7f8264266e82623/nvidia_nvjitlink_cu12-12.9.86-py3-none-win_amd64.whl", hash = "sha256:cc6fcec260ca843c10e34c936921a1c426b351753587fdd638e8cff7b16bb9db", size = 35584936, upload-time = "2025-06-05T20:16:08.525Z" },
 ]
 
 [[package]]
 name = "nvidia-nvtx-cu12"
 version = "12.1.105"
 source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/da/d3/8057f0587683ed2fcd4dbfbdfdfa807b9160b809976099d36b8f60d08f03/nvidia_nvtx_cu12-12.1.105-py3-none-manylinux1_x86_64.whl", hash = "sha256:dc21cf308ca5691e7c04d962e213f8a4aa9bbfa23d95412f452254c2caeb09e5", size = 99138, upload-time = "2023-04-19T15:48:43.556Z" },
+    { url = "https://files.pythonhosted.org/packages/b8/d7/bd7cb2d95ac6ac6e8d05bfa96cdce69619f1ef2808e072919044c2d47a8c/nvidia_nvtx_cu12-12.1.105-py3-none-win_amd64.whl", hash = "sha256:65f4d98982b31b60026e0e6de73fbdfc09d08a96f4656dd3665ca616a11e1e82", size = 66307, upload-time = "2023-04-19T15:54:45.736Z" },
+]
+
+[[package]]
+name = "nvidia-nvtx-cu12"
+version = "12.4.127"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform != 'emscripten'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/06/39/471f581edbb7804b39e8063d92fc8305bdc7a80ae5c07dbe6ea5c50d14a5/nvidia_nvtx_cu12-12.4.127-py3-none-manylinux2014_aarch64.whl", hash = "sha256:7959ad635db13edf4fc65c06a6e9f9e55fc2f92596db928d169c0bb031e88ef3", size = 100417, upload-time = "2024-06-18T20:16:22.484Z" },
+    { url = "https://files.pythonhosted.org/packages/87/20/199b8713428322a2f22b722c62b8cc278cc53dffa9705d744484b5035ee9/nvidia_nvtx_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl", hash = "sha256:781e950d9b9f60d8241ccea575b32f5105a5baf4c2351cab5256a24869f12a1a", size = 99144, upload-time = "2024-04-03T20:56:12.406Z" },
+    { url = "https://files.pythonhosted.org/packages/54/1b/f77674fbb73af98843be25803bbd3b9a4f0a96c75b8d33a2854a5c7d2d77/nvidia_nvtx_cu12-12.4.127-py3-none-win_amd64.whl", hash = "sha256:641dccaaa1139f3ffb0d3164b4b84f9d253397e38246a4f2f36728b48566d485", size = 66307, upload-time = "2024-04-03T21:02:01.959Z" },
 ]
 
 [[package]]
@@ -1674,10 +1991,10 @@ name = "pandas"
 version = "3.0.5"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
-    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
     { name = "python-dateutil" },
-    { name = "tzdata", marker = "sys_platform == 'emscripten' or sys_platform == 'win32'" },
+    { name = "tzdata", marker = "sys_platform == 'emscripten' or sys_platform == 'win32' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/be/4f/5f3422a2afec5ffc46308b79e53291365a93748b498ac2e58bead0197916/pandas-3.0.5.tar.gz", hash = "sha256:dca3734d6ab7c906e6730f0788b0a1dbb9f2467731f9711f77995c8e9d62d712", size = 4658219, upload-time = "2026-07-22T22:19:28.819Z" }
 wheels = [
@@ -2159,7 +2476,7 @@ name = "pytest"
 version = "9.1.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
     { name = "iniconfig" },
     { name = "packaging" },
     { name = "pluggy" },
@@ -2423,10 +2740,10 @@ source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "joblib" },
     { name = "narwhals" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
-    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
-    { name = "scipy", version = "1.17.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
-    { name = "scipy", version = "1.18.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "scipy", version = "1.17.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "scipy", version = "1.18.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
     { name = "threadpoolctl" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/fa/6f/37092bdb25f712817231799fc5674d8e704066a8a70c1d2d40517e18b4ab/scikit_learn-1.9.0.tar.gz", hash = "sha256:8833266989d3a5110178a9fae30783675460724d0e1efb13b14901d2c660c557", size = 7750767, upload-time = "2026-06-02T11:54:32.706Z" }
@@ -2468,12 +2785,19 @@ name = "scipy"
 version = "1.17.1"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
-    "python_full_version < '3.12' and sys_platform == 'win32'",
-    "python_full_version < '3.12' and sys_platform == 'emscripten'",
-    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version < '3.12' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform == 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform == 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform == 'emscripten' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "(python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version < '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')",
+    "(python_full_version < '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version < '3.12' and sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')",
+    "python_full_version < '3.12' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform == 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
 ]
 dependencies = [
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/7a/97/5a3609c4f8d58b039179648e62dd220f89864f56f7357f5d4f45c29eb2cc/scipy-1.17.1.tar.gz", hash = "sha256:95d8e012d8cb8816c226aef832200b1d45109ed4464303e997c5b13122b297c0", size = 30573822, upload-time = "2026-02-23T00:26:24.851Z" }
 wheels = [
@@ -2544,15 +2868,27 @@ name = "scipy"
 version = "1.18.1"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
-    "python_full_version >= '3.14' and sys_platform == 'win32'",
-    "python_full_version >= '3.14' and sys_platform == 'emscripten'",
-    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
-    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'win32'",
-    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'emscripten'",
-    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version >= '3.14' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.14' and sys_platform == 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.14' and sys_platform == 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.14' and sys_platform == 'emscripten' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.14' and sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'emscripten' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "(python_full_version >= '3.12' and python_full_version < '3.14' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version >= '3.12' and python_full_version < '3.14' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version == '3.13.*' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')",
+    "python_full_version >= '3.14' and sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "(python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version == '3.12.*' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')",
+    "python_full_version >= '3.14' and sys_platform == 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121'",
 ]
 dependencies = [
-    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/7e/74/66de6258867beb2ef08f35f9f2ac017a52cacd5081714d239ff1a442d458/scipy-1.18.1.tar.gz", hash = "sha256:52c4b7422442aba924d03ad4019852b08a92e64ea187b933135687bfe2747307", size = 30781235, upload-time = "2026-08-21T23:28:50.599Z" }
 wheels = [
@@ -2624,8 +2960,8 @@ version = "0.13.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "matplotlib" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
-    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
     { name = "pandas" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/86/59/a451d7420a77ab0b98f7affa3a1d78a313d2f7281a57afb1a34bae8ab412/seaborn-0.13.2.tar.gz", hash = "sha256:93e60a40988f4d65e9f4885df477e2fdaff6b73a9ded434c1ab356dd57eefff7", size = 1457696, upload-time = "2024-01-25T13:21:52.551Z" }
@@ -2666,7 +3002,7 @@ version = "1.6.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anyio" },
-    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.13' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/b5/b4/205b0d5241d934e8add0c38aa924c4f9fb7330834ff11e5444db964ec3f9/starlette-1.6.0.tar.gz", hash = "sha256:d4e3ac5e546444960c710297a3c9fc3f7ebae1b7e963f3d36173b49da535be9b", size = 2716969, upload-time = "2026-08-08T18:27:57.512Z" }
 wheels = [
@@ -2776,28 +3112,143 @@ wheels = [
 
 [[package]]
 name = "torch"
+version = "2.5.1"
+source = { registry = "https://download.pytorch.org/whl/cpu" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform == 'darwin'",
+    "(python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'darwin') or (python_full_version == '3.12.*' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux')",
+    "(python_full_version < '3.12' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux') or (python_full_version < '3.12' and sys_platform == 'darwin')",
+]
+dependencies = [
+    { name = "filelock", marker = "(python_full_version < '3.13' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version >= '3.13' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'aarch64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "fsspec", marker = "(python_full_version < '3.13' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version >= '3.13' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'aarch64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "jinja2", marker = "(python_full_version < '3.13' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version >= '3.13' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'aarch64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "networkx", marker = "(python_full_version < '3.13' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version >= '3.13' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'aarch64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "setuptools", marker = "(python_full_version == '3.12.*' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version >= '3.12' and sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version != '3.12.*' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "sympy", marker = "(python_full_version < '3.13' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version >= '3.13' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'aarch64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "typing-extensions", marker = "(python_full_version < '3.13' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version >= '3.13' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'aarch64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_python_implementation != 'CPython' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+]
+wheels = [
+    { url = "https://download-r2.pytorch.org/whl/cpu/torch-2.5.1-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d5b3203f191bc40783c99488d2e776dcf93ac431a59491d627a1ca5b3ae20b22", upload-time = "2024-10-29T23:02:06Z" },
+    { url = "https://download-r2.pytorch.org/whl/cpu/torch-2.5.1-cp311-none-macosx_11_0_arm64.whl", hash = "sha256:31f8c39660962f9ae4eeec995e3049b5492eb7360dd4f07377658ef4d728fa4c", upload-time = "2024-10-29T23:02:11Z" },
+    { url = "https://download-r2.pytorch.org/whl/cpu/torch-2.5.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:36d1be99281b6f602d9639bd0af3ee0006e7aab16f6718d86f709d395b6f262c", upload-time = "2024-10-29T23:02:14Z" },
+    { url = "https://download-r2.pytorch.org/whl/cpu/torch-2.5.1-cp312-none-macosx_11_0_arm64.whl", hash = "sha256:8c712df61101964eb11910a846514011f0b6f5920c55dbf567bff8a34163d5b1", upload-time = "2024-10-29T23:02:18Z" },
+]
+
+[[package]]
+name = "torch"
+version = "2.5.1"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform == 'emscripten'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'emscripten'",
+    "python_full_version >= '3.14' and sys_platform != 'emscripten'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten'",
+    "python_full_version < '3.12' and sys_platform == 'win32'",
+    "python_full_version < '3.12' and sys_platform == 'emscripten'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
+dependencies = [
+    { name = "filelock", marker = "(extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "fsspec", marker = "(extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "jinja2", marker = "(extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "networkx", marker = "(extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-cublas-cu12", version = "12.4.5.8", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-cuda-cupti-cu12", version = "12.4.127", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-cuda-nvrtc-cu12", version = "12.4.127", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-cuda-runtime-cu12", version = "12.4.127", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-cudnn-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-cufft-cu12", version = "11.2.1.3", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-curand-cu12", version = "10.3.5.147", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-cusolver-cu12", version = "11.6.1.9", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-cusparse-cu12", version = "12.3.1.170", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-nccl-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-nvjitlink-cu12", version = "12.4.127", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-nvtx-cu12", version = "12.4.127", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "setuptools", marker = "(python_full_version >= '3.12' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "sympy", marker = "(extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "triton", marker = "(python_full_version < '3.13' and platform_machine == 'x86_64' and sys_platform == 'linux' and extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "typing-extensions", marker = "(extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (extra != 'extra-25-arabic-sentiment-analysis-cpu' and extra != 'extra-25-arabic-sentiment-analysis-cu121')" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d1/35/e8b2daf02ce933e4518e6f5682c72fd0ed66c15910ea1fb4168f442b71c4/torch-2.5.1-cp311-cp311-manylinux1_x86_64.whl", hash = "sha256:de5b7d6740c4b636ef4db92be922f0edc425b65ed78c5076c43c42d362a45457", size = 906474467, upload-time = "2024-10-29T17:38:49.832Z" },
+    { url = "https://files.pythonhosted.org/packages/40/04/bd91593a4ca178ece93ca55f27e2783aa524aaccbfda66831d59a054c31e/torch-2.5.1-cp311-cp311-manylinux2014_aarch64.whl", hash = "sha256:340ce0432cad0d37f5a31be666896e16788f1adf8ad7be481196b503dad675b9", size = 91919450, upload-time = "2024-10-29T17:37:26.693Z" },
+    { url = "https://files.pythonhosted.org/packages/0d/4a/e51420d46cfc90562e85af2fee912237c662ab31140ab179e49bd69401d6/torch-2.5.1-cp311-cp311-win_amd64.whl", hash = "sha256:603c52d2fe06433c18b747d25f5c333f9c1d58615620578c326d66f258686f9a", size = 203098237, upload-time = "2024-10-29T17:36:11.731Z" },
+    { url = "https://files.pythonhosted.org/packages/d0/db/5d9cbfbc7968d79c5c09a0bc0bc3735da079f2fd07cc10498a62b320a480/torch-2.5.1-cp311-none-macosx_11_0_arm64.whl", hash = "sha256:31f8c39660962f9ae4eeec995e3049b5492eb7360dd4f07377658ef4d728fa4c", size = 63884466, upload-time = "2024-10-29T17:33:02.899Z" },
+    { url = "https://files.pythonhosted.org/packages/8b/5c/36c114d120bfe10f9323ed35061bc5878cc74f3f594003854b0ea298942f/torch-2.5.1-cp312-cp312-manylinux1_x86_64.whl", hash = "sha256:ed231a4b3a5952177fafb661213d690a72caaad97d5824dd4fc17ab9e15cec03", size = 906389343, upload-time = "2024-10-29T17:37:06.758Z" },
+    { url = "https://files.pythonhosted.org/packages/6d/69/d8ada8b6e0a4257556d5b4ddeb4345ea8eeaaef3c98b60d1cca197c7ad8e/torch-2.5.1-cp312-cp312-manylinux2014_aarch64.whl", hash = "sha256:3f4b7f10a247e0dcd7ea97dc2d3bfbfc90302ed36d7f3952b0008d0df264e697", size = 91811673, upload-time = "2024-10-29T17:32:42.789Z" },
+    { url = "https://files.pythonhosted.org/packages/5f/ba/607d013b55b9fd805db2a5c2662ec7551f1910b4eef39653eeaba182c5b2/torch-2.5.1-cp312-cp312-win_amd64.whl", hash = "sha256:73e58e78f7d220917c5dbfad1a40e09df9929d3b95d25e57d9f8558f84c9a11c", size = 203046841, upload-time = "2024-10-29T17:35:48.665Z" },
+    { url = "https://files.pythonhosted.org/packages/57/6c/bf52ff061da33deb9f94f4121fde7ff3058812cb7d2036c97bc167793bd1/torch-2.5.1-cp312-none-macosx_11_0_arm64.whl", hash = "sha256:8c712df61101964eb11910a846514011f0b6f5920c55dbf567bff8a34163d5b1", size = 63858109, upload-time = "2024-10-29T17:36:21.973Z" },
+    { url = "https://files.pythonhosted.org/packages/69/72/20cb30f3b39a9face296491a86adb6ff8f1a47a897e4d14667e6cf89d5c3/torch-2.5.1-cp313-cp313-manylinux1_x86_64.whl", hash = "sha256:9b61edf3b4f6e3b0e0adda8b3960266b9009d02b37555971f4d1c8f7a05afed7", size = 906393265, upload-time = "2024-10-29T17:35:06.866Z" },
+]
+
+[[package]]
+name = "torch"
+version = "2.5.1+cpu"
+source = { registry = "https://download.pytorch.org/whl/cpu" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform == 'win32'",
+    "python_full_version >= '3.14' and sys_platform == 'emscripten'",
+    "python_full_version >= '3.14' and sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'win32'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'emscripten'",
+    "(python_full_version >= '3.12' and python_full_version < '3.14' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version >= '3.12' and python_full_version < '3.14' and platform_python_implementation != 'CPython' and sys_platform == 'linux') or (python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32') or (python_full_version == '3.13.*' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux')",
+    "python_full_version < '3.12' and sys_platform == 'win32'",
+    "python_full_version < '3.12' and sys_platform == 'emscripten'",
+    "(python_full_version < '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version < '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux') or (python_full_version < '3.12' and sys_platform != 'darwin' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32')",
+]
+dependencies = [
+    { name = "filelock", marker = "(python_full_version >= '3.13' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version < '3.13' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "fsspec", marker = "(python_full_version >= '3.13' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version < '3.13' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "jinja2", marker = "(python_full_version >= '3.13' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version < '3.13' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "networkx", marker = "(python_full_version >= '3.13' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version < '3.13' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "setuptools", marker = "(python_full_version >= '3.13' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version >= '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version < '3.12' and platform_machine != 'aarch64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version >= '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version < '3.12' and platform_python_implementation != 'CPython' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version >= '3.12' and sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version < '3.12' and sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "sympy", marker = "(python_full_version >= '3.13' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version < '3.13' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "typing-extensions", marker = "(python_full_version >= '3.13' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version < '3.13' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'aarch64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (platform_python_implementation != 'CPython' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform != 'darwin' and sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu') or (sys_platform == 'darwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+]
+wheels = [
+    { url = "https://download-r2.pytorch.org/whl/cpu/torch-2.5.1%2Bcpu-cp311-cp311-linux_x86_64.whl", hash = "sha256:07d7c9e069123d5af08b0cf0013d74f680b2d8be7d9e2cf561a52c90c55d9409", upload-time = "2024-10-29T23:00:55Z" },
+    { url = "https://download-r2.pytorch.org/whl/cpu/torch-2.5.1%2Bcpu-cp311-cp311-win_amd64.whl", hash = "sha256:81531d4d5ca74163dc9574b87396531e546a60cceb6253303c7db6a21e867fdf", upload-time = "2024-10-29T23:01:02Z" },
+    { url = "https://download-r2.pytorch.org/whl/cpu/torch-2.5.1%2Bcpu-cp312-cp312-linux_x86_64.whl", hash = "sha256:4856f9d6925121d13c2df07aa7580b767f449dfe71ae5acde9c27535d5da4840", upload-time = "2024-10-29T23:01:13Z" },
+    { url = "https://download-r2.pytorch.org/whl/cpu/torch-2.5.1%2Bcpu-cp312-cp312-win_amd64.whl", hash = "sha256:a6b720410350765d3d77c01a5ce098a6c45af446284e45e87a98b8a16e7d564d", upload-time = "2024-10-29T23:01:21Z" },
+    { url = "https://download-r2.pytorch.org/whl/cpu/torch-2.5.1%2Bcpu-cp313-cp313-linux_x86_64.whl", hash = "sha256:5dbbdf83caa90d0bcaa50e4933ca424889133b35226db79000877d4ec5d9ea37", upload-time = "2024-10-29T23:01:30Z" },
+]
+
+[[package]]
+name = "torch"
 version = "2.5.1+cu121"
 source = { registry = "https://download.pytorch.org/whl/cu121" }
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform == 'win32'",
+    "python_full_version >= '3.14' and sys_platform == 'emscripten'",
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'win32'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'emscripten'",
+    "python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version < '3.12' and sys_platform == 'win32'",
+    "python_full_version < '3.12' and sys_platform == 'emscripten'",
+    "python_full_version < '3.12' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
 dependencies = [
-    { name = "filelock" },
-    { name = "fsspec" },
-    { name = "jinja2" },
-    { name = "networkx" },
-    { name = "nvidia-cublas-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-cuda-cupti-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-cuda-nvrtc-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-cuda-runtime-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-cudnn-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-cufft-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-curand-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-cusolver-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-cusparse-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-nccl-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "nvidia-nvtx-cu12", marker = "platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "setuptools", marker = "python_full_version >= '3.12'" },
-    { name = "sympy" },
-    { name = "triton", marker = "python_full_version < '3.13' and platform_machine == 'x86_64' and sys_platform == 'linux'" },
-    { name = "typing-extensions" },
+    { name = "filelock", marker = "extra == 'extra-25-arabic-sentiment-analysis-cu121'" },
+    { name = "fsspec", marker = "extra == 'extra-25-arabic-sentiment-analysis-cu121'" },
+    { name = "jinja2", marker = "extra == 'extra-25-arabic-sentiment-analysis-cu121'" },
+    { name = "networkx", marker = "extra == 'extra-25-arabic-sentiment-analysis-cu121'" },
+    { name = "nvidia-cublas-cu12", version = "12.1.3.1", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'x86_64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-cuda-cupti-cu12", version = "12.1.105", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'x86_64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-cuda-nvrtc-cu12", version = "12.1.105", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'x86_64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-cuda-runtime-cu12", version = "12.1.105", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'x86_64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-cudnn-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'x86_64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-cufft-cu12", version = "11.0.2.54", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'x86_64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-curand-cu12", version = "10.3.2.106", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'x86_64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-cusolver-cu12", version = "11.4.5.107", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'x86_64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-cusparse-cu12", version = "12.1.0.106", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'x86_64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-nccl-cu12", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'x86_64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "nvidia-nvtx-cu12", version = "12.1.105", source = { registry = "https://pypi.org/simple" }, marker = "(platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'x86_64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "setuptools", marker = "(python_full_version >= '3.12' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "sympy", marker = "extra == 'extra-25-arabic-sentiment-analysis-cu121'" },
+    { name = "triton", marker = "(python_full_version < '3.13' and platform_machine == 'x86_64' and sys_platform == 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version >= '3.13' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (platform_machine != 'x86_64' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform != 'linux' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "typing-extensions", marker = "extra == 'extra-25-arabic-sentiment-analysis-cu121'" },
 ]
 wheels = [
     { url = "https://download-r2.pytorch.org/whl/cu121/torch-2.5.1%2Bcu121-cp311-cp311-linux_x86_64.whl", hash = "sha256:c8ab8c92eab928a93c483f83ca8c63f13dafc10fc93ad90ed2dcb7c82ea50410", upload-time = "2024-10-29T23:18:06Z" },
@@ -2812,7 +3263,7 @@ name = "tqdm"
 version = "4.66.5"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/58/83/6ba9844a41128c62e810fddddd72473201f3eacde02046066142a2d96cc5/tqdm-4.66.5.tar.gz", hash = "sha256:e1020aef2e5096702d8a025ac7d16b1577279c9d63f8375b63083e9a5f0fcbad", size = 169504, upload-time = "2024-08-03T22:35:40.339Z" }
 wheels = [
@@ -2825,8 +3276,8 @@ version = "5.15.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "huggingface-hub" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
-    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
+    { name = "numpy", version = "2.5.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
     { name = "packaging" },
     { name = "pyyaml" },
     { name = "regex" },
@@ -2845,11 +3296,20 @@ name = "triton"
 version = "3.1.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "filelock", marker = "python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'" },
+    { name = "filelock", marker = "(python_full_version >= '3.12' and python_full_version < '3.14' and sys_platform == 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32' and extra != 'extra-25-arabic-sentiment-analysis-cpu') or (python_full_version < '3.12' and sys_platform == 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version < '3.14' and sys_platform != 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version >= '3.14' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (python_full_version >= '3.12' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform == 'emscripten' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/86/17/d9a5cf4fcf46291856d1e90762e36cbabd2a56c7265da0d1d9508c8e3943/triton-3.1.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0f34f6e7885d1bf0eaaf7ba875a5f0ce6f3c13ba98f9503651c1e6dc6757ed5c", size = 209506424, upload-time = "2024-10-14T16:05:42.337Z" },
     { url = "https://files.pythonhosted.org/packages/78/eb/65f5ba83c2a123f6498a3097746607e5b2f16add29e36765305e4ac7fdd8/triton-3.1.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c8182f42fd8080a7d39d666814fa36c5e30cc00ea7eeeb1a2983dbb4c99a0fdc", size = 209551444, upload-time = "2024-10-14T16:05:53.433Z" },
+]
+
+[[package]]
+name = "truststore"
+version = "0.10.4"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/53/a3/1585216310e344e8102c22482f6060c7a6ea0322b63e026372e6dcefcfd6/truststore-0.10.4.tar.gz", hash = "sha256:9d91bd436463ad5e4ee4aba766628dd6cd7010cf3e2461756b3303710eebc301", size = 26169, upload-time = "2025-08-12T18:49:02.73Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/19/97/56608b2249fe206a67cd573bc93cd9896e1efb9e98bce9c163bcdc704b88/truststore-0.10.4-py3-none-any.whl", hash = "sha256:adaeaecf1cbb5f4de3b1959b42d41f6fab57b2b1666adb59e89cb0b53361d981", size = 18660, upload-time = "2025-08-12T18:49:01.46Z" },
 ]
 
 [[package]]
@@ -2858,7 +3318,7 @@ version = "0.27.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "annotated-doc" },
-    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
     { name = "rich" },
     { name = "shellingham" },
 ]
@@ -2921,11 +3381,11 @@ wheels = [
 
 [package.optional-dependencies]
 standard = [
-    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
     { name = "httptools" },
     { name = "python-dotenv" },
     { name = "pyyaml" },
-    { name = "uvloop", marker = "platform_python_implementation != 'PyPy' and sys_platform != 'cygwin' and sys_platform != 'win32'" },
+    { name = "uvloop", marker = "(platform_python_implementation != 'PyPy' and sys_platform != 'cygwin' and sys_platform != 'win32') or (platform_python_implementation == 'PyPy' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform == 'cygwin' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121') or (sys_platform == 'win32' and extra == 'extra-25-arabic-sentiment-analysis-cpu' and extra == 'extra-25-arabic-sentiment-analysis-cu121')" },
     { name = "watchfiles" },
     { name = "websockets" },
 ]
