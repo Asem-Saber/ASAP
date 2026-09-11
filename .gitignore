@@ -6,4 +6,5 @@ wheels/
 *.egg-info
 .venv
 notebooks/
-data/
+/data/
+/models/
