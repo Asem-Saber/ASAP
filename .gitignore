@@ -8,3 +8,4 @@ wheels/
 notebooks/
 /data/
 /models/
+.coverage
