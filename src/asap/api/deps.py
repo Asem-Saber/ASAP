@@ -2,7 +2,7 @@ from typing import Annotated
 
 from fastapi import Depends, HTTPException, status
 from asap.inference import predictor
-from asap.inference.predictor import SentimentModel
+from asap.inference.base import SentimentModel
 
 
 def get_model() -> SentimentModel:

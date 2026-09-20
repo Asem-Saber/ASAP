@@ -36,5 +36,4 @@ class HealthResponse(BaseModel):
     status: str
     model_loaded: bool
     model_dir: str
-    device: str
-    dtype: str
+    providers: list[str]

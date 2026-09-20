@@ -26,8 +26,7 @@ def health() -> HealthResponse:
         status="ok" if model is not None else "loading",
         model_loaded=model is not None,
         model_dir=str(cfg.inference.model_dir),
-        device=model.device if model is not None else cfg.inference.device,
-        dtype=model.dtype if model is not None else cfg.inference.dtype,
+        providers=list(model.providers) if model is not None else [cfg.inference.provider],
     )
 
 
