@@ -1,7 +1,8 @@
 import logging
 from pathlib import Path
-import torch
-from transformers import pipeline
+import numpy as np
+import onnxruntime as ort
+from transformers import AutoTokenizer
 from asap.config import Settings, get_settings
 from asap.inference.base import SentimentResult
 from asap.preprocessing import normalize
@@ -9,89 +10,101 @@ from asap.preprocessing import normalize
 logger= logging.getLogger(__name__)
 
 
-def _resolve_device(device: str) -> str:
-    if device.startswith("cuda") and not torch.cuda.is_available():
-        logger.warning("cuda requested but unavailable, falling back to cpu")
-        return "cpu"
-    return device
+def _softmax(logits: np.ndarray) -> np.ndarray:
+    shifted = logits - logits.max(axis=-1, keepdims=True)
+    exp = np.exp(shifted)
+    return exp / exp.sum(axis=-1, keepdims=True)
 
 
-def _resolve_dtype(dtype: str, device: str) -> str:
-    if dtype == "float16" and device == "cpu":
-        logger.warning("float16 requested on cpu, falling back to float32")
-        return "float32"
-    return dtype
-
-
-class SentimentModel:
+class OnnxPredictor:
     def __init__(
         self,
-        model_path: Path | None = None,
-        device: str | None = None,
+        model_dir: Path | None = None,
+        model_file: str | None = None,
         max_length: int | None = None,
+        provider: str | None = None,
+        intra_op_num_threads: int | None = None,
         settings: Settings | None = None,
     ) -> None:
         self.cfg= settings or get_settings()
         inf= self.cfg.inference
 
-        self.model_path= model_path or inf.model_dir
-        self.device= _resolve_device(device or inf.device)
-        self.dtype= _resolve_dtype(inf.dtype, self.device)
+        self.model_dir= Path(model_dir) if model_dir is not None else Path(inf.model_dir)
+        self.model_file= model_file or inf.model_file
         self.max_length= max_length or inf.max_length
         self.batch_size= inf.batch_size
         self.truncate= inf.truncate
 
-        self.classifier= pipeline(
-            "text-classification",
-            model= str(self.model_path),
-            tokenizer= str(self.model_path),
-            device= self.device,
-            dtype= self.dtype,
-            batch_size= self.batch_size,
-            max_length= self.max_length,
-            truncation= self.truncate
-        )
+        graph = self.model_dir / self.model_file
+        if not graph.is_file():
+            raise FileNotFoundError(
+                f"no ONNX graph at {graph}. Run asap-export-onnx first."
+            )
 
-    def _to_label(self, label: str) -> str:
-        if label.startswith("LABEL_"):
-            return self.cfg.data.labels[int(label.removeprefix("LABEL_"))]
-        return label
+        self.tokenizer= AutoTokenizer.from_pretrained(str(self.model_dir))
+
+        threads= (
+            intra_op_num_threads
+            if intra_op_num_threads is not None
+            else inf.intra_op_num_threads
+        )
+        options= ort.SessionOptions()
+        if threads:
+            options.intra_op_num_threads= threads
+        self.intra_op_num_threads= threads
+
+        self.provider= provider or inf.provider
+        self.session= ort.InferenceSession(
+            str(graph), options, providers=[self.provider]
+        )
+        self.providers= self.session.get_providers()
+
+        self._input_names= [i.name for i in self.session.get_inputs()]
+
+    def _run(self, texts: list[str]) -> list[SentimentResult]:
+        enc = self.tokenizer(
+            texts,
+            padding=True,
+            truncation=self.truncate,
+            max_length=self.max_length,
+            return_tensors="np",
+        )
+        feed = {n: np.asarray(enc[n], dtype=np.int64) for n in self._input_names}
+        probs = _softmax(self.session.run(None, feed)[0])
+        idxs = probs.argmax(axis=-1)
+
+        return [
+            {
+                "sentiment": self.cfg.data.labels[int(idx)],
+                "confidence": float(probs[row, idx])
+            }
+            for row, idx in enumerate(idxs)
+        ]
 
     def warmup(self) -> None:
         self.predict("المنتج رائع")
 
     def predict(self, text: str) -> SentimentResult:
-        clean_text= normalize(text)
-        result= self.classifier(clean_text)[0]
-
-        return {
-            "sentiment": self._to_label(result["label"]),
-            "confidence": result["score"]
-        }
+        return self._run([normalize(text)])[0]
 
     def predict_batch(self, texts: list[str]) -> list[SentimentResult]:
         if not texts:
             return []
 
         cleaned_texts= [normalize(text) for text in texts]
-        results= self.classifier(cleaned_texts)
-
-        return [
-            {
-                "sentiment": self._to_label(result["label"]),
-                "confidence": result["score"]
-            }
-            for result in results
-        ]
+        results: list[SentimentResult] = []
+        for start in range(0, len(cleaned_texts), self.batch_size):
+            results.extend(self._run(cleaned_texts[start : start + self.batch_size]))
+        return results
 
 
-sentiment_model: SentimentModel | None = None
+sentiment_model: OnnxPredictor | None = None
 
-def load_model(settings: Settings | None = None) -> SentimentModel:
+def load_model(settings: Settings | None = None) -> OnnxPredictor:
     global sentiment_model
     if sentiment_model is None:
         cfg = settings or get_settings()
-        sentiment_model = SentimentModel(settings=cfg)
+        sentiment_model = OnnxPredictor(settings=cfg)
         sentiment_model.warmup()
     return sentiment_model
 

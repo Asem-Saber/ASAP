@@ -1,4 +1,10 @@
-from asap.inference.base import SentimentResult
-from asap.inference.predictor import SentimentModel, load_model, reset_model
+from asap.inference.base import SentimentModel, SentimentResult
+from asap.inference.predictor import OnnxPredictor, load_model, reset_model
 
-__all__ = ["SentimentResult", "SentimentModel", "load_model", "reset_model"]
+__all__ = [
+    "OnnxPredictor",
+    "SentimentModel",
+    "SentimentResult",
+    "load_model",
+    "reset_model",
+]
