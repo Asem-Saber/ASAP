@@ -18,6 +18,7 @@ class Paths(BaseModel):
     model_dir: Path
     mlm_dir: Path
     cls_dir: Path
+    onnx_dir: Path
 
 class DataConfig(BaseModel):
     text_column: str
@@ -60,9 +61,10 @@ class TrainingConfig(BaseModel):
     classifier: ClassifierConfig
 
 class InferenceConfig(BaseModel):
-    model_dir: Path | None = None
-    device: str
-    dtype: Literal["auto", "float32", "float16"]
+    model_dir: Path
+    model_file: str
+    provider: Literal["CPUExecutionProvider", "CUDAExecutionProvider"]
+    intra_op_num_threads: int
     max_length: int
     batch_size: int
     truncate: bool
