@@ -1,5 +1,6 @@
 import argparse
 import logging
+import warnings
 from pathlib import Path
 
 import torch
@@ -46,7 +47,11 @@ def export_onnx(
     inputs = (dummy["input_ids"], dummy["attention_mask"])
 
     graph = out / "model.onnx"
-    with torch.no_grad():
+    with torch.no_grad(), warnings.catch_warnings():
+        warnings.filterwarnings("ignore", category=torch.jit.TracerWarning)
+        warnings.filterwarnings(
+            "ignore", message=".*aten::index.*", category=UserWarning
+        )
         torch.onnx.export(
             model,
             inputs,
