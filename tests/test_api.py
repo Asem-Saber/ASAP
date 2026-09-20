@@ -10,8 +10,7 @@ API = get_settings().api
 
 
 class FakeModel:
-    device = "cpu"
-    dtype = "float32"
+    providers = ["CPUExecutionProvider"]
 
     def predict(self, text: str):
         return {"sentiment": "positive", "confidence": 0.99}
@@ -77,7 +76,15 @@ def test_health_reports_loading_before_startup(monkeypatch):
     assert body["status"] == "loading"
     assert body["model_loaded"] is False
     assert body["model_dir"] == str(get_settings().inference.model_dir)
-    assert body["dtype"] == get_settings().inference.dtype
+    assert body["providers"] == [get_settings().inference.provider]
+
+
+def test_health_no_longer_reports_torch_fields(monkeypatch):
+    monkeypatch.setattr(predictor, "sentiment_model", None)
+    body = TestClient(create_app()).get("/").json()
+
+    assert "device" not in body
+    assert "dtype" not in body
 
 
 def test_cors_middleware_added_only_when_origins_configured(monkeypatch):
@@ -94,16 +101,15 @@ def test_no_cors_headers_by_default(client):
     assert "access-control-allow-origin" not in response.headers
 
 
-@pytest.mark.gpu
 @pytest.mark.slow
 def test_real_model_endpoint():
     cfg = get_settings()
-    if not cfg.inference.model_dir.exists():
-        pytest.skip(f"no checkpoint at {cfg.inference.model_dir}")
+    graph = cfg.inference.model_dir / cfg.inference.model_file
+    if not graph.is_file():
+        pytest.skip(f"no exported graph at {graph}; run asap-export-onnx")
 
     predictor.reset_model()
     try:
-        # The context manager runs the lifespan, which loads the real model.
         with TestClient(create_app()) as client:
             assert client.get("/").json()["model_loaded"] is True
 
