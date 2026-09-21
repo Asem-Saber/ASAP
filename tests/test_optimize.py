@@ -44,11 +44,14 @@ def test_export_writes_a_graph_a_tokenizer_and_a_config(tmp_path):
 def test_exported_graph_declares_dynamic_dimensions(tmp_path):
     """Reads the written graph rather than trusting the export call, so a
     silently-static axis cannot pass."""
-    import onnx
-
     cfg = get_settings()
     if not cfg.paths.cls_dir.is_dir():
         pytest.skip(f"no classifier checkpoint at {cfg.paths.cls_dir}")
+
+    # importorskip, not a bare import: the onnx package comes from the export
+    # extra, which CI does not install. A bare import here raised
+    # ModuleNotFoundError instead of skipping, failing the run.
+    onnx = pytest.importorskip("onnx", reason="needs the export extra")
 
     graph = export_onnx(src_dir=cfg.paths.cls_dir, out_dir=tmp_path / "onnx")
     model = onnx.load(str(graph))
