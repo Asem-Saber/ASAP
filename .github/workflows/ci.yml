@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - "api-and-inference"
+    paths-ignore:
+      - "**.md"
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  UV_LOCKED: "1"
+
+jobs:
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup UV
+        uses: astral-sh/setup-uv@v10.0.0
+        with:
+          version: "0.11.2"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Install dependencies
+        run: uv sync --extra onnx --extra cpu --extra dev
+
+      - name: Run tests
+        run: uv run --no-sync pytest -m "" -v --cov=asap --cov-report=term-missing

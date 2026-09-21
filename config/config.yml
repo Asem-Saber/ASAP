@@ -10,6 +10,7 @@ paths:
   model_dir: models
   mlm_dir: models/mlm
   cls_dir: models/cls
+  onnx_dir: models/onnx
 
 data: 
   text_column: content
@@ -28,9 +29,10 @@ data:
     1: positive
 
 inference:
-  model_dir: models/cls
-  device: cuda
-  dtype: auto
+  model_dir: models/onnx
+  model_file: model.onnx
+  provider: CPUExecutionProvider
+  intra_op_num_threads: 4
   max_length: 128
   batch_size: 32
   truncate: true
