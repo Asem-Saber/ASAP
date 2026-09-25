@@ -81,7 +81,6 @@ class ApiConfig(BaseModel):
     max_batch_items: int
 
 class TrackingConfig(BaseModel):
-    enabled: bool = False
     uri: str
     artifact_dir: Path
     experiment: str

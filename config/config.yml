@@ -47,7 +47,6 @@ api:
   max_batch_items: 128
 
 tracking:
-  enabled: false
   uri: sqlite:///mlruns.db
   artifact_dir: mlruns/artifacts
   experiment: asap-sentiment
