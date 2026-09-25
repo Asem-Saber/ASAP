@@ -40,7 +40,7 @@ def test_sha256_file_is_correct_across_multiple_chunks(tmp_path):
     """Exercises the chunked read loop rather than a single-chunk file, since
     checkpoints here are ~500 MB and an off-by-one in the loop would only show
     up past the first chunk."""
-    blob = bytes(range(256)) * 20_000  # ~5 MB, several 1 MiB chunks
+    blob = bytes(range(256)) * 20_000  
     target = tmp_path / "big.bin"
     target.write_bytes(blob)
 
