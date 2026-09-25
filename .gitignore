@@ -9,3 +9,8 @@ notebooks/
 /data/
 /models/
 .coverage
+
+# MLflow tracking store and artifacts, per config/config.yml tracking.uri and
+# tracking.artifact_dir. The sqlite file is created on the first tracked run.
+/mlruns/
+mlruns.db
