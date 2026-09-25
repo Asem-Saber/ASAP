@@ -11,6 +11,7 @@ paths:
   mlm_dir: models/mlm
   cls_dir: models/cls
   onnx_dir: models/onnx
+  experiments_dir: models/experiments
 
 data: 
   text_column: content
@@ -45,10 +46,21 @@ api:
   max_text_chars: 4000
   max_batch_items: 128
 
+tracking:
+  enabled: false
+  uri: sqlite:///mlruns.db
+  artifact_dir: mlruns/artifacts
+  experiment: asap-sentiment
+  registered_model: asap-sentiment-clf
+  primary_metric: test_f1
+  greater_is_better: true
+
 training:
   mlm:
     base_model: distilbert-base-multilingual-cased
     mlm_probability: 0.15
+    max_rows: 100000
+    normalize_text: true
     epochs: 10
     batch_size: 8
     learning_rate: 2.0e-5

@@ -19,6 +19,7 @@ class Paths(BaseModel):
     mlm_dir: Path
     cls_dir: Path
     onnx_dir: Path
+    experiments_dir: Path
 
 class DataConfig(BaseModel):
     text_column: str
@@ -40,6 +41,8 @@ class MlmConfig(BaseModel):
     weight_decay: float
     max_length: int
     use_fp16: bool
+    max_rows: int | None = None
+    normalize_text: bool = True
 
 class ClassifierConfig(BaseModel):
     base_model: str
@@ -77,6 +80,15 @@ class ApiConfig(BaseModel):
     max_text_chars: int
     max_batch_items: int
 
+class TrackingConfig(BaseModel):
+    enabled: bool = False
+    uri: str
+    artifact_dir: Path
+    experiment: str
+    registered_model: str
+    primary_metric: str
+    greater_is_better: bool
+
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
@@ -94,6 +106,7 @@ class Settings(BaseSettings):
     training: TrainingConfig
     inference: InferenceConfig
     api: ApiConfig
+    tracking: TrackingConfig
 
     @classmethod
     def settings_customise_sources(

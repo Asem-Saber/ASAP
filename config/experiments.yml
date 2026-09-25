@@ -1,0 +1,15 @@
+variants:
+  baseline:
+    base_model: distilbert-base-multilingual-cased
+    learning_rate: 2.0e-5
+    epochs: 5
+
+  mlm:
+    base_model: models/mlm
+    learning_rate: 2.0e-5
+    epochs: 5
+
+  arabic-base:
+    base_model: aubmindlab/bert-base-arabertv02
+    learning_rate: 2.0e-5
+    epochs: 5
