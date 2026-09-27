@@ -14,7 +14,6 @@ def ctx():
         variant="baseline",
         git_sha="a" * 40,
         git_dirty=False,
-        data_hash=None,
         params={"learning_rate": 2e-5, "epochs": 5},
     )
 
@@ -36,23 +35,6 @@ def test_context_tags_are_applied(ctx, cfg):
     assert tags["variant"] == "baseline"
     assert tags["git_sha"] == "a" * 40
     assert tags["git_dirty"] == "False"
-
-
-def test_absent_data_hash_is_omitted_not_placeheld(ctx, cfg):
-    """'none' as a placeholder is indistinguishable from a real value and
-    matches queries looking for runs that have a hash."""
-    with mlflow_run(ctx, settings=cfg) as run:
-        run_id = run.info.run_id
-
-    assert "data_hash" not in mlflow.get_run(run_id).data.tags
-
-
-def test_present_data_hash_is_tagged(cfg):
-    ctx = RunContext("v", "b" * 40, False, "abc123.dir", {})
-    with mlflow_run(ctx, settings=cfg) as run:
-        run_id = run.info.run_id
-
-    assert mlflow.get_run(run_id).data.tags["data_hash"] == "abc123.dir"
 
 
 def test_params_are_namespaced(ctx, cfg):
