@@ -10,7 +10,7 @@ paths:
   model_dir: models
   mlm_dir: models/mlm
   cls_dir: models/cls
-  onnx_dir: models/onnx
+  onnx_dir: models/best_model
   experiments_dir: models/experiments
 
 data: 
@@ -30,7 +30,7 @@ data:
     1: positive
 
 inference:
-  model_dir: models/onnx
+  model_dir: models/best_model
   model_file: model.onnx
   provider: CPUExecutionProvider
   intra_op_num_threads: 4
