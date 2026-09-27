@@ -329,8 +329,8 @@ and adaptive batching are staged in
 - **Selection is reproducible.** The best model is chosen by querying MLflow,
   not by an in-process comparison, so the ranking can be re-derived from the
   tracking store alone.
-- **Provenance is recorded.** Runs carry a git SHA and a dirty-tree flag.
-  Dataset fingerprinting via DVC is not yet wired in.
+- **Provenance is recorded.** Runs carry a git SHA and a dirty-tree flag, so
+  a result can be traced back to the code that produced it.
 - **Input validation.** Request size and batch limits are enforced by Pydantic
   schemas; an unknown execution provider is rejected at startup rather than
   silently falling back.
@@ -342,7 +342,6 @@ and adaptive batching are staged in
 - [x] Experiment tracking and model selection (MLflow)
 - [x] ONNX export with verified parity
 - [x] CPU-only FastAPI serving
-- [ ] Data and pipeline versioning (DVC)
 - [ ] INT8 quantization
 - [ ] Concurrency and adaptive batching
 - [ ] Containerized deployment
