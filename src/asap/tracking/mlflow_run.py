@@ -32,8 +32,6 @@ def mlflow_run(ctx: RunContext, *, settings: Settings | None = None) -> Iterator
             "git_sha": ctx.git_sha,
             "git_dirty": str(ctx.git_dirty),
         }
-        if ctx.data_hash is not None:
-            tags["data_hash"] = ctx.data_hash
         mlflow.set_tags(tags)
         mlflow.log_params({f"{PARAM_PREFIX}{k}": v for k, v in ctx.params.items()})
 
