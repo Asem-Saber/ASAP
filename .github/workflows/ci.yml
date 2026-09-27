@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - "api-and-inference"
+      - "experiments"
     paths-ignore:
       - "**.md"
   pull_request:
@@ -34,7 +35,7 @@ jobs:
           cache-dependency-glob: "uv.lock"
 
       - name: Install dependencies
-        run: uv sync --extra onnx --extra cpu --extra dev
+        run: uv sync --extra onnx --extra cpu --extra train --extra dev
 
       - name: Run tests
         run: uv run --no-sync pytest -m "" -v --cov=asap --cov-report=term-missing

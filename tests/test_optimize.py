@@ -7,7 +7,14 @@ from asap.optimize.export_onnx import DYNAMIC_AXES, export_onnx
 
 
 def test_onnx_dir_is_configured():
-    assert get_settings().paths.onnx_dir == Path("models/onnx")
+    assert get_settings().paths.onnx_dir == Path("models/best_model")
+
+
+def test_export_target_is_what_serving_reads():
+    """asap-export-onnx writes where the API loads from, so a rename of one
+    without the other would silently leave serving on a stale graph."""
+    cfg = get_settings()
+    assert cfg.paths.onnx_dir == cfg.inference.model_dir
 
 
 def test_export_rejects_a_missing_checkpoint(tmp_path):
@@ -48,9 +55,6 @@ def test_exported_graph_declares_dynamic_dimensions(tmp_path):
     if not cfg.paths.cls_dir.is_dir():
         pytest.skip(f"no classifier checkpoint at {cfg.paths.cls_dir}")
 
-    # importorskip, not a bare import: the onnx package comes from the export
-    # extra, which CI does not install. A bare import here raised
-    # ModuleNotFoundError instead of skipping, failing the run.
     onnx = pytest.importorskip("onnx", reason="needs the export extra")
 
     graph = export_onnx(src_dir=cfg.paths.cls_dir, out_dir=tmp_path / "onnx")

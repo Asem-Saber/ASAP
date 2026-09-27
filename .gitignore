@@ -9,3 +9,6 @@ notebooks/
 /data/
 /models/
 .coverage
+/mlruns/
+/*.db
+/*.db-journal
