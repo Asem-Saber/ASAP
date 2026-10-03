@@ -12,6 +12,7 @@ paths:
   cls_dir: models/cls
   onnx_dir: models/best_model
   experiments_dir: models/experiments
+  bench_sample: data/sample_reviews.jsonl
 
 data: 
   text_column: content
@@ -44,7 +45,7 @@ api:
   log_level: info
   cors_origins: []
   max_text_chars: 4000
-  max_batch_items: 128
+  max_concurrent_inference: 3
 
 tracking:
   uri: sqlite:///mlruns.db

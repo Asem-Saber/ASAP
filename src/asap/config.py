@@ -20,6 +20,7 @@ class Paths(BaseModel):
     cls_dir: Path
     onnx_dir: Path
     experiments_dir: Path
+    bench_sample: Path
 
 class DataConfig(BaseModel):
     text_column: str
@@ -78,7 +79,7 @@ class ApiConfig(BaseModel):
     log_level: Literal["critical", "error", "warning", "info", "debug", "trace"]
     cors_origins: list[str]
     max_text_chars: int
-    max_batch_items: int
+    max_concurrent_inference: int
 
 class TrackingConfig(BaseModel):
     uri: str
