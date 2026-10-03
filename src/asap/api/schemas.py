@@ -18,17 +18,9 @@ class PredictRequest(BaseModel):
     text: ReviewText
 
 
-class BatchPredictRequest(BaseModel):
-    texts: list[ReviewText] = Field(min_length=1, max_length=_api.max_batch_items)
-
-
 class Prediction(BaseModel):
     sentiment: str
     confidence: float = Field(ge=0.0, le=1.0)
-
-
-class BatchPredictResponse(BaseModel):
-    predictions: list[Prediction]
 
 
 class HealthResponse(BaseModel):
