@@ -9,16 +9,35 @@ from asap.optimize.quantize import (
 )
 
 
+def fp32_baseline() -> str:
+    """The graph the exporter writes and `graphs_match` measures against.
+
+    Read from the code rather than restated as a literal, so this file cannot
+    drift from it. It is deliberately not `inference.model_file`: serving now
+    points at the INT8 graph, so the served file is no longer the fp32 source.
+    """
+    from inspect import signature
+
+    from asap.optimize.verify import graphs_match
+
+    return signature(graphs_match).parameters["baseline_file"].default
+
+
 def test_quantized_graph_sits_beside_the_fp32_graph():
     """Serving picks a graph through inference.model_file, so both must live in
     the same directory for the switch to be a config change only."""
     assert QUANTIZED_FILENAME == "model_quantized.onnx"
 
 
-def test_quantizing_never_overwrites_the_served_graph():
-    """A quantized graph written over model.onnx would silently replace the
-    fp32 baseline every comparison is measured against."""
-    assert QUANTIZED_FILENAME != get_settings().inference.model_file
+def test_quantizing_never_overwrites_the_fp32_baseline():
+    """Serving now points at the INT8 graph, so the older invariant — that the
+    served file differs from the quantized one — no longer holds by design.
+
+    What must still hold is that quantizing never lands on the fp32 baseline
+    `graphs_match` measures against; overwriting it would leave the comparison
+    with no reference.
+    """
+    assert QUANTIZED_FILENAME != fp32_baseline()
 
 
 def test_gate_thresholds_match_the_serving_design():
@@ -46,7 +65,7 @@ def test_quantize_defaults_to_the_configured_serving_directory(tmp_path, monkeyp
 @pytest.mark.slow
 def test_quantization_shrinks_the_graph(tmp_path):
     cfg = get_settings()
-    src = cfg.inference.model_dir / cfg.inference.model_file
+    src = cfg.inference.model_dir / fp32_baseline()
     if not src.is_file():
         pytest.skip(f"no exported graph at {src}; run asap-export-onnx")
 
@@ -70,7 +89,7 @@ def test_graphs_match_compares_the_two_graphs(tmp_path):
     from asap.optimize.verify import graphs_match
 
     cfg = get_settings()
-    src = cfg.inference.model_dir / cfg.inference.model_file
+    src = cfg.inference.model_dir / fp32_baseline()
     fixture = cfg.paths.bench_sample
     if not src.is_file():
         pytest.skip(f"no exported graph at {src}; run asap-export-onnx")

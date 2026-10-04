@@ -13,7 +13,7 @@ def stub_session(tmp_path, monkeypatch):
     """Patch AutoTokenizer and ort.InferenceSession with fakes and return the
     shared call-recording dict. After this, OnnxPredictor(model_dir=tmp_path)
     constructs without a real graph."""
-    (tmp_path / "model.onnx").write_bytes(b"not-a-real-graph")
+    (tmp_path / get_settings().inference.model_file).write_bytes(b"not-a-real-graph")
     calls: dict = {"runs": []}
 
     class FakeTokenizer:
