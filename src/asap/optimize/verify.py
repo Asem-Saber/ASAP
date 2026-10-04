@@ -44,6 +44,29 @@ def padding_consistency(
     return float(np.abs(alone - batched).max())
 
 
+def graphs_match(
+    onnx_dir: Path,
+    texts: list[str],
+    *,
+    max_length: int,
+    baseline_file: str = "model.onnx",
+    candidate_file: str = "model_quantized.onnx",
+) -> dict[str, float]:
+    if not texts:
+        raise ValueError("need at least one text to compare")
+
+    baseline = _onnx_logits_fn(onnx_dir, baseline_file, max_length)
+    candidate = _onnx_logits_fn(onnx_dir, candidate_file, max_length)
+
+    reference = np.vstack([baseline([t]) for t in texts])
+    derived = np.vstack([candidate([t]) for t in texts])
+
+    return {
+        "max_abs_delta": float(np.abs(derived - reference).max()),
+        "label_agreement": float((derived.argmax(-1) == reference.argmax(-1)).mean()),
+    }
+
+
 def logits_match(
     torch_dir: Path,
     onnx_dir: Path,
