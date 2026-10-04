@@ -20,6 +20,7 @@ class Paths(BaseModel):
     cls_dir: Path
     onnx_dir: Path
     experiments_dir: Path
+    bench_sample: Path
 
 class DataConfig(BaseModel):
     text_column: str
@@ -78,7 +79,11 @@ class ApiConfig(BaseModel):
     log_level: Literal["critical", "error", "warning", "info", "debug", "trace"]
     cors_origins: list[str]
     max_text_chars: int
-    max_batch_items: int
+    max_concurrent_inference: int
+
+class UiConfig(BaseModel):
+    api_url: str | None = None
+    request_timeout: float = 20.0
 
 class TrackingConfig(BaseModel):
     uri: str
@@ -105,6 +110,7 @@ class Settings(BaseSettings):
     training: TrainingConfig
     inference: InferenceConfig
     api: ApiConfig
+    ui: UiConfig = UiConfig()
     tracking: TrackingConfig
 
     @classmethod

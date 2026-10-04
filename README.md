@@ -13,26 +13,23 @@ and a FastAPI service that runs on CPU alone.
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 **Current model:** AraBERTv02 fine-tuned on 247k Arabic reviews —
-**0.948 weighted F1** on a held-out test split, served as ONNX at
-**95 ms p50** on CPU. See the [experiment report](reports/experiments.md) for
-how it was chosen.
+**0.948 weighted F1** in fp32, served as INT8 ONNX at **0.944 F1** and
+**22 ms** uncontended on CPU. See the [experiment report](reports/experiments.md)
+for how it was chosen.
 
 ## 🎯 Features
 
 - **Arabic sentiment classification** — positive / negative, with confidence
   scores, from a fine-tuned transformer.
-- **One preprocessing path** — the same `normalize()` runs in training and
-  serving, so the model never sees text it was not trained on.
 - **Tracked experimentation** — every run records its git SHA, hyperparameters
   and metrics to MLflow; the best model is selected server-side by query, not
   by hand.
-- **Verified ONNX export** — the exported graph is checked against its source
-  checkpoint before it can be promoted, and publication is refused if they
-  disagree.
 - **CPU-only serving** — no GPU and no PyTorch in the serving environment;
   ONNX Runtime alone, in a ~300 MB install.
-- **FastAPI backend** — single and batch prediction, with request validation
-  and a health endpoint reporting the resolved execution provider.
+- **INT8 quantization** — a 4× smaller graph serving 1.6× the throughput, for
+  0.68 F1 points. `asap-quantize` measures the trade before it is taken.
+- **FastAPI backend** — single prediction with request validation, and a health
+  endpoint reporting the resolved execution provider.
 
 ## 🏗️ Architecture
 
@@ -65,7 +62,8 @@ graph TD
     subgraph Serving ["Online · CPU only"]
         Export["📦 ONNX export + parity gate<br>asap.optimize"]:::serve
         Graph[("🧊 models/best_model<br>model.onnx")]:::serve
-        API["⚡ FastAPI<br>/predict · /predict/batch"]:::serve
+        API["⚡ FastAPI<br>GET / · POST /predict"]:::serve
+    UI["🖥️ Streamlit UI<br>asap.ui"]:::serve
     end
 
     Raw --> Norm --> Splits
@@ -74,7 +72,7 @@ graph TD
     Trainer --> Experiments
     Experiments -- "runs + logged models" --> MLflow
     MLflow -- "best by test_f1" --> Export
-    Export --> Graph --> API
+    Export --> Graph --> API --> UI
     Norm -.-> API
 ```
 
@@ -89,12 +87,13 @@ graph TD
 
 ### Serving an existing model
 
-The lightest install: ONNX Runtime only, no PyTorch.
+The lightest install: CPU-only ONNX Runtime, no PyTorch. On a GPU host, use
+`--extra onnx` instead.
 
 ```bash
 git clone https://github.com/Asem-Saber/ASAP.git
 cd ASAP
-uv sync --extra onnx
+uv sync --extra serve
 ```
 
 ```bash
@@ -120,6 +119,40 @@ curl -s -X POST http://127.0.0.1:8000/predict \
 > `models/` is gitignored, so a fresh clone has no weights. Train and export
 > first, or drop an exported graph into `models/best_model/`.
 
+### Streamlit UI
+
+A one-box UI over the same `/predict` route. It is an HTTP client, not a second
+inference path — the API must be running first.
+
+```bash
+uv sync --extra serve --extra ui
+```
+
+> `uv sync` is exact: it removes anything outside the extras you name. If you
+> already have the full development install, add the extra without tearing the
+> rest out:
+>
+> ```bash
+> uv sync --inexact --extra ui
+> ```
+
+```bash
+uv run asap-api        # terminal 1
+uv run asap-ui         # terminal 2
+```
+
+The UI opens at http://localhost:8501 with four preset Arabic reviews to try.
+To point it at a service elsewhere:
+
+```bash
+ASAP_UI__API_URL=https://my-api.example.com uv run asap-ui
+```
+
+The UI calls the API from its own Python process, so the API has to be
+reachable from wherever the UI runs. `config/config.yml` binds the API to
+`127.0.0.1`, which only accepts local connections. For a remote API, bind it
+beyond loopback with `ASAP_API__HOST=0.0.0.0` or put it behind a proxy.
+
 ### Full development install
 
 ```bash
@@ -127,6 +160,59 @@ uv sync --extra onnx --extra export --extra train --extra cu121 --extra dev --ex
 ```
 
 Swap `--extra cu121` for `--extra cpu` on a machine without an NVIDIA GPU.
+
+## Deployment
+
+Both services run as containers. One multi-stage `Dockerfile` produces two
+images — only the API image carries ONNX Runtime, while both share the
+project's base dependencies.
+
+```bash
+docker compose up --build
+```
+
+- API: http://127.0.0.1:8000
+- UI: http://127.0.0.1:8501
+
+The UI waits on the API's healthcheck, so the UI only becomes reachable once
+the model is loaded and warmed up, which takes tens of seconds on a cold start.
+Compose stops waiting after about two minutes; at that point `docker compose
+up` fails and the UI is never started.
+
+### Weights
+
+`models/` is gitignored and **not** baked into the image. Compose mounts it
+read-only:
+
+```yaml
+volumes:
+  - ./models:/app/models:ro
+```
+
+So a host without `models/best_model/model.onnx` will start the API container
+and have it exit. Because the UI depends on the API's healthcheck,
+`docker compose up` then aborts on the unhealthy dependency and the UI
+container is never created. Train and export first, or drop an exported graph
+in.
+
+This also means the image alone is not self-contained. It deploys to anywhere
+with persistent storage — a VPS, Fly.io volumes, ECS with EFS — but on Hugging
+Face Spaces, or a bare `docker run` on a fresh host, the weights have to be
+supplied separately. Baking them takes two changes: a `COPY` in the `api` stage
+and dropping `models/` from `.dockerignore`.
+
+### Configuration in containers
+
+Two `ASAP_` overrides are in play, through the usual mechanism: the `api` image
+sets one and compose sets the other:
+
+| Variable | Set by | Value | Why |
+|---|---|---|---|
+| `ASAP_API__HOST` | the `api` image | `0.0.0.0` | `config.yml` binds `127.0.0.1`, which inside a container is the container's own loopback — the published port would refuse every connection |
+| `ASAP_UI__API_URL` | compose | `http://api:8000` | the UI reaches the API by compose service name; its config default would point at the UI container itself |
+
+Ports publish to `127.0.0.1`, so `docker compose up` does not expose the UI
+to your network.
 
 ## 📋 Configuration
 
@@ -140,14 +226,22 @@ paths:
   processed_dir: data/processed
   onnx_dir: models/best_model        # export target
   experiments_dir: models/experiments # per-variant checkpoints
+  bench_sample: data/sample_reviews.jsonl  # load-test fixture
 
 inference:
   model_dir: models/best_model       # what the API serves
-  model_file: model.onnx
+  model_file: model_quantized.onnx   # or model.onnx — see Quantization
   provider: CPUExecutionProvider
   intra_op_num_threads: 4            # machine-specific; see Performance
   max_length: 128
   batch_size: 32
+
+api:
+  max_concurrent_inference: 3        # concurrent inference calls admitted
+
+ui:
+  api_url: null                      # null -> http://{api.host}:{api.port}
+  request_timeout: 20.0
 
 tracking:
   uri: sqlite:///mlruns.db
@@ -172,11 +266,14 @@ Dependencies are split by role so a serving install stays small.
 
 | Extra | Purpose | Notable contents |
 |---|---|---|
-| `onnx` | Serving | `onnxruntime-gpu` — the only runtime the API needs |
+| `onnx` | Serving, GPU-capable host | `onnxruntime-gpu` |
+| `serve` | Serving, CPU only (containers) | `onnxruntime` — no CUDA kernels, ~260 MB smaller |
 | `export` | ONNX conversion | `onnx` (also requires a torch extra) |
 | `train` | Training and data prep | `datasets`, `scikit-learn`, `pandas` |
 | `track` | Experiment tracking | `mlflow` |
 | `dev` | Tests | `pytest`, `pytest-cov`, `httpx2` |
+| `ui` | Streamlit UI | `streamlit`, `httpx` |
+| `bench` | Load testing | `locust`, `urllib3>=2` |
 | `cpu` / `cu121` | PyTorch build, mutually exclusive | `torch 2.5.1` |
 
 ## 🏗️ Project Structure
@@ -188,12 +285,17 @@ Arabic-Sentiment-Analysis/
 │   ├── preprocessing.py           # normalize() — shared by training & serving
 │   ├── api/
 │   │   ├── app.py                 # FastAPI app, lifespan model loading
-│   │   ├── routes.py              # /, /predict, /predict/batch
+│   │   ├── routes.py              # /, /predict
 │   │   ├── schemas.py             # Pydantic request/response models
 │   │   └── deps.py                # Protocol-typed model dependency
 │   ├── inference/
 │   │   ├── base.py                # SentimentModel Protocol
 │   │   └── predictor.py           # ONNX Runtime session + tokenizer
+│   ├── ui/
+│   │   ├── app.py                 # Streamlit view
+│   │   ├── client.py              # httpx client for /predict
+│   │   ├── examples.py            # preset Arabic reviews
+│   │   └── cli.py                 # `asap-ui` launcher
 │   ├── data/
 │   │   └── build.py               # Dedup, filter, stratified splits
 │   ├── training/
@@ -205,18 +307,26 @@ Arabic-Sentiment-Analysis/
 │   │   └── mlflow_run.py          # Run lifecycle
 │   └── optimize/
 │       ├── export_onnx.py         # torch.onnx export with dynamic axes
+│       ├── quantize.py            # INT8 dynamic quantization + quality gate
 │       └── verify.py              # ONNX ↔ checkpoint parity checks
+├── benchmarks/
+│   ├── locustfile.py              # load shapes for /predict and /
+│   └── runs/                      # recorded run artifacts (csv, html, charts)
 ├── scripts/
-│   └── run_experiments.py         # Train all variants, rank, export winner
-├── tests/                         # 100 tests, pytest
+│   ├── run_experiments.py         # Train all variants, rank, export winner
+│   └── sample_data.py             # Build the load-test fixture
+├── tests/                         # pytest suite
 ├── config/
 │   ├── config.yml                 # Application settings
 │   └── experiments.yml            # Variant matrix
 ├── reports/
+│   ├── benchmark.md               # fp32 vs INT8 serving comparison
 │   ├── experiments.md             # Encoder comparison results
 │   └── figures/                   # Generated from the tracking store
 ├── notebooks/                     # Exploratory work, MLM prototype
 ├── .github/workflows/ci.yml       # Tests + coverage on push
+├── Dockerfile                     # api and ui build targets
+├── docker-compose.yml             # both services, healthcheck, weights mount
 └── pyproject.toml
 ```
 
@@ -246,6 +356,26 @@ change, not a code change.
 ```bash
 uv run asap-export-onnx --src models/experiments/arabic-base --out models/best_model
 ```
+
+### Quantizing a graph
+
+```bash
+uv run asap-quantize --check
+```
+
+Writes `model_quantized.onnx` beside `model.onnx` and measures it against the
+fp32 graph. Exits non-zero when the measured drop exceeds the thresholds in
+`asap.optimize.quantize`.
+
+### Load testing
+
+```bash
+python scripts/sample_data.py            # once — builds the fixture
+uv run asap-api                          # terminal 1
+locust -f benchmarks/locustfile.py       # terminal 2
+```
+
+Results from recorded runs live in [`reports/benchmark.md`](reports/benchmark.md).
 
 ### Inspecting experiments
 
@@ -301,14 +431,38 @@ The batching check matters most: a sequence axis frozen during tracing produces
 correct results on single inputs and only diverges when a short input is padded
 up beside a long one.
 
+### Quantization
+
+`asap-quantize` applies INT8 dynamic quantization — no calibration set required.
+The result is selected at serve time through `inference.model_file`, so
+switching is a config change rather than a code change.
+
+| Measure | fp32 | INT8 | Change |
+|---|---:|---:|---|
+| Graph size | 541.0 MB | **136.0 MB** | 3.98× smaller |
+| `/predict` throughput | 8.89 rps | **14.20 rps** | 1.60× faster |
+| `test_f1` | 0.9504 | 0.9436 | −0.0068 |
+| Label agreement vs fp32 | — | 0.9688 | 3.1% of labels change |
+
+**INT8 is the served default.** The accuracy cost is a deliberate trade for
+throughput and footprint. A workload where a 3% label change is material should
+re-weigh it. Static quantization with a calibration set would likely recover
+most of the F1 at the same speed, and is the next refinement.
+
 ## 📈 Performance
 
-Measured on an RTX 3060 Ti host, 12 physical CPU cores, 128-token inputs.
+Measured on a 12th Gen Intel i7-12700 (12 physical / 20 logical cores),
+128-token inputs, via [`benchmarks/locustfile.py`](benchmarks/locustfile.py) at
+100 concurrent users.
 
-| Configuration | p50 | p95 |
-|---|---|---|
-| CPU, 4 threads (current) | **95 ms** | 163 ms |
-| CPU, all cores | 292 ms | 366 ms |
+| | fp32 | INT8 | Change |
+|---|---:|---:|---|
+| `/predict` throughput | 8.89 rps | **14.20 rps** | 1.60× |
+| Uncontended latency | 39 ms | **22.4 ms** | 1.74× |
+| p95 under load | 10.0 s | **5.2 s** | 1.92× |
+| Graph size | 541 MB | **136 MB** | 3.98× |
+
+Full method, charts and caveats: [`reports/benchmark.md`](reports/benchmark.md).
 
 `intra_op_num_threads` is **machine-specific and deliberately not left at the
 default**. ONNX Runtime otherwise spawns one thread per physical core, and for
@@ -316,46 +470,13 @@ a model this size the synchronisation overhead costs more than the parallelism
 returns — measurably slower at 12 threads than at 4. Re-measure on new
 hardware.
 
-Requests are currently served one at a time. Raising concurrency, quantization
-and adaptive batching are staged in
+Concurrency is bounded by `api.max_concurrent_inference` (default 3). Raising it
+does **not** raise throughput: a sweep over `1×4`, `3×4`, `6×2` and `12×1`
+pairings of limiter and thread count held near 10 rps throughout. Roughly 99.6%
+of a request is `session.run`, so model cost — not request concurrency — sets
+the ceiling. Remaining stages are in
 [`docs/superpowers/specs/2026-09-26-serving-performance-design.md`](docs/superpowers/specs/2026-09-26-serving-performance-design.md).
-
-## 🔒 Notes on Correctness
-
-- **One preprocessing path.** `normalize()` is shared by training and serving,
-  which removes the most common source of train/serve skew.
-- **Export is gated, not assumed.** A graph whose predictions disagree with its
-  checkpoint is refused rather than published.
-- **Selection is reproducible.** The best model is chosen by querying MLflow,
-  not by an in-process comparison, so the ranking can be re-derived from the
-  tracking store alone.
-- **Provenance is recorded.** Runs carry a git SHA and a dirty-tree flag, so
-  a result can be traced back to the code that produced it.
-- **Input validation.** Request size and batch limits are enforced by Pydantic
-  schemas; an unknown execution provider is rejected at startup rather than
-  silently falling back.
-
-## 🗺️ Roadmap
-
-- [x] Shared preprocessing, stratified splits
-- [x] MLM domain adaptation
-- [x] Experiment tracking and model selection (MLflow)
-- [x] ONNX export with verified parity
-- [x] CPU-only FastAPI serving
-- [ ] INT8 quantization
-- [ ] Concurrency and adaptive batching
-- [ ] Containerized deployment
 
 ## 📝 License
 
-MIT — see [LICENSE](LICENSE).
-
-## 🤝 Contributing
-
-Contributions are welcome:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

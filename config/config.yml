@@ -12,6 +12,7 @@ paths:
   cls_dir: models/cls
   onnx_dir: models/best_model
   experiments_dir: models/experiments
+  bench_sample: data/sample_reviews.jsonl
 
 data: 
   text_column: content
@@ -31,7 +32,7 @@ data:
 
 inference:
   model_dir: models/best_model
-  model_file: model.onnx
+  model_file: model_quantized.onnx
   provider: CPUExecutionProvider
   intra_op_num_threads: 4
   max_length: 128
@@ -44,7 +45,11 @@ api:
   log_level: info
   cors_origins: []
   max_text_chars: 4000
-  max_batch_items: 128
+  max_concurrent_inference: 3
+
+ui:
+  api_url: null
+  request_timeout: 20.0
 
 tracking:
   uri: sqlite:///mlruns.db

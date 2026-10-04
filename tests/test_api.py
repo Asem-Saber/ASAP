@@ -1,7 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
 
-from asap.api import deps
+from asap.api import deps, routes
 from asap.api.app import create_app
 from asap.config import get_settings
 from asap.inference import predictor
@@ -34,29 +34,12 @@ def test_predict_returns_sentiment_and_confidence(client):
     assert response.json() == {"sentiment": "positive", "confidence": 0.99}
 
 
-def test_predict_batch_returns_one_prediction_per_input(client):
-    response = client.post("/predict/batch", json={"texts": ["اول", "ثاني", "ثالث"]})
-    assert response.status_code == 200
-    assert len(response.json()["predictions"]) == 3
-
-
 def test_predict_rejects_empty_text(client):
     assert client.post("/predict", json={"text": "   "}).status_code == 422
 
 
 def test_predict_rejects_oversized_text(client):
     response = client.post("/predict", json={"text": "ا" * (API.max_text_chars + 1)})
-    assert response.status_code == 422
-
-
-def test_predict_batch_rejects_empty_list(client):
-    assert client.post("/predict/batch", json={"texts": []}).status_code == 422
-
-
-def test_predict_batch_rejects_oversized_batch(client):
-    response = client.post(
-        "/predict/batch", json={"texts": ["نص"] * (API.max_batch_items + 1)}
-    )
     assert response.status_code == 422
 
 
@@ -85,6 +68,18 @@ def test_health_no_longer_reports_torch_fields(monkeypatch):
 
     assert "device" not in body
     assert "dtype" not in body
+
+
+def test_inference_limiter_size_comes_from_config():
+    """Serving concurrency is a config decision, not a hardcoded 1.
+
+    It is also half of one tuning decision: limiter x intra_op_num_threads must
+    stay within the physical core count, or the ONNX threads oversubscribe.
+    """
+    cfg = get_settings()
+
+    assert routes._inference_limiter.total_tokens == cfg.api.max_concurrent_inference
+    assert cfg.api.max_concurrent_inference * cfg.inference.intra_op_num_threads <= 12
 
 
 def test_cors_middleware_added_only_when_origins_configured(monkeypatch):
@@ -118,9 +113,9 @@ def test_real_model_endpoint():
                 == "positive"
             )
 
-            batch = client.post(
-                "/predict/batch", json={"texts": ["المنتج رائع", "خدمة سيئة جدا"]}
-            ).json()["predictions"]
-            assert [p["sentiment"] for p in batch] == ["positive", "negative"]
+            assert (
+                client.post("/predict", json={"text": "خدمة سيئة جدا"}).json()["sentiment"]
+                == "negative"
+            )
     finally:
         predictor.reset_model()
