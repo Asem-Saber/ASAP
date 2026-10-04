@@ -12,3 +12,4 @@ notebooks/
 /mlruns/
 /*.db
 /*.db-journal
+benchmarks/runs/**/*.html
