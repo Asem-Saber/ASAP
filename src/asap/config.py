@@ -81,6 +81,10 @@ class ApiConfig(BaseModel):
     max_text_chars: int
     max_concurrent_inference: int
 
+class UiConfig(BaseModel):
+    api_url: str | None = None
+    request_timeout: float = 20.0
+
 class TrackingConfig(BaseModel):
     uri: str
     artifact_dir: Path
@@ -106,6 +110,7 @@ class Settings(BaseSettings):
     training: TrainingConfig
     inference: InferenceConfig
     api: ApiConfig
+    ui: UiConfig = UiConfig()
     tracking: TrackingConfig
 
     @classmethod
